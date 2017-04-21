@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1492799984692.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "C6A5F853",
+    "lastKnownWriteTime" : 1492799541,
+    "last_content_update" : 1492799541,
+    "path" : "~/git/tabby/eyeglass/R/launch.R",
+    "project_path" : "eyeglass/R/launch.R",
+    "properties" : {
+        "cursorPosition" : "7,82",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

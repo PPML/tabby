@@ -1,0 +1,33 @@
+.dull-section {
+/*  border-left: 1px solid #DCDCDC;*/
+}
+
+.dull-section-toggle > label {
+  width: 100%;
+  margin: 0;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.dull-section-toggle > label span:before {
+  width: 1em;
+  float: left;
+  font-family: FontAwesome;
+  font-style: normal;
+  font-size: 14px;
+  content: attr(data-icon-expanded);
+}
+
+.dull-section-toggle > .collapsed span:before {
+  content: attr(data-icon-collapsed);
+}
+
+.dull-section-content {
+  width: 100%;
+  margin-left: 0;
+  padding-left: 10px;
+}

@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1492810035593.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "E1BE5E45",
+    "lastKnownWriteTime" : 1492810075,
+    "last_content_update" : 1492810075842,
+    "path" : "~/git/tabby/eyeglass/R/tab-downloads.R",
+    "project_path" : "eyeglass/R/tab-downloads.R",
+    "properties" : {
+        "cursorPosition" : "88,25",
+        "scrollLine" : "71"
+    },
+    "relative_order" : 7,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

@@ -1,0 +1,67 @@
+.dull-input-bar {
+  display: table;
+  width: 100%;
+  position: relative;
+  table-layout: fixed;
+  border-collapse: separate;
+  vertical-align: middle;
+  line-height: 2em;
+  box-sizing: border-box;
+}
+
+.dull-bar-cell {
+  display: table-cell;
+  float: none;
+  width: 1%;
+  position: relative;
+  vertical-align: middle;
+  border: 1px solid #DCDCDC;
+  border-radius: 0px;
+}
+
+.dull-bar-cell + .dull-bar-cell {
+  border-left: none;
+}
+
+.dull-bar-cell:first-child {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.dull-bar-cell:last-child {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.dull-bar-cell > label > input {
+  display: none;
+}
+
+.dull-bar-cell > label {
+  width: 100%;
+  margin: 0;
+  position: relative;
+  float: left;
+  display: inline-block;
+  text-align: center;
+  white-space: nowrap;
+  cursor: pointer;
+  vertical-align: middle;
+  font-weight: normal;
+}
+
+.dull-bar-cell > label input[type=radio]:checked ~ span {
+  background: #DCDCDC;
+}
+
+.dull-bar-cell > label span {
+  display: block;
+  height: 100%;
+  width: 100%;
+  color: #000000;
+}
+
+.dull-bar-cell > label span span > * {
+  margin: 0 5px;
+}
+

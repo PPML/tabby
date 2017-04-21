@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1492805917155.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "9D2C2153",
+    "lastKnownWriteTime" : 1492807238,
+    "last_content_update" : 1492807238964,
+    "path" : "~/git/tabby/eyeglass/R/tutorial.R",
+    "project_path" : "eyeglass/R/tutorial.R",
+    "properties" : {
+        "cursorPosition" : "104,108",
+        "scrollLine" : "87"
+    },
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

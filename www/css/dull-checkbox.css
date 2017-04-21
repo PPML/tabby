@@ -1,0 +1,49 @@
+.dull-options-column {
+  float: left;
+}
+
+.dull-options-column + .dull-options-column {
+  padding-left: 15px;
+}
+
+.dull-input-checkboxgroup .clear-fix {
+  display: table;
+  content: "";
+  clear: both;
+}
+
+.dull-checkbox label {
+  width: 100%;
+  height: 100%;
+  margin-bottom: 0;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  cursor: pointer;
+}
+
+.dull-checkbox input[type=checkbox] {
+  display: none;
+}
+
+.dull-checkbox input[type=checkbox] + span::before {
+  width: 1em;
+  float: left;
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  opacity: 0.25;
+  content: attr(data-icon-not-checked);
+}
+
+.dull-checkbox input[type=checkbox]:checked + span::before {
+  opacity: 1.0;
+  content: attr(data-icon-checked);
+}
+
+.dull-checkbox-description {
+  display: block;
+  width: 100%;
+  margin-left: 1.5em;
+  font-weight: normal;
+}
