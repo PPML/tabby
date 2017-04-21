@@ -291,7 +291,7 @@ analyses <- list(
 settings <- list(
   color = list(
     standard = c(
-      "base_case" = "#0E1111",
+      "base_case" = "#8A9DA3",
       "intervention_1" = "#C7351E",
       "intervention_2" = "#5BBCD6",
       "intervention_3" = "#7B6DA8",
