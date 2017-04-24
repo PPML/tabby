@@ -36,7 +36,7 @@ downloadController <- function(input, output, session, plot, data) {
       strftime(Sys.Date(), "tb-plot-%F.png")
     },
     content = function(file) {
-      png(file, res = 72, width = 680)
+      png(file, res = 72, width = 720)
       print(plot())
       dev.off()
     }

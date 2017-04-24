@@ -9,10 +9,10 @@ if (!interactive()) {
   system("fc-cache -f ~/.fonts")
 }
 
+options(shiny.usecairo = TRUE)
+
 library(shiny)
 library(Cairo)
-
-options(shiny.usecairo = TRUE)
 
 devtools::load_all("eyeglass")
 
