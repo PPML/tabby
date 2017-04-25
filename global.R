@@ -1,11 +1,21 @@
 if (!interactive()) {
-  if (dir.exists("~/.fonts/arsenal/")) {
-    unlink("~/.fonts/arsenal", recursive = TRUE)
-  } else {
-    dir.create("~/.fonts")
+  if (!dir.exists("~/.fonts/arsenal")) {
+    dir.create("~/.fonts/arsenal", recursive = TRUE)
   }
 
-  system("cp -r eyeglass/inst/fonts/arsenal ~/.fonts")
+  download.font <- function(fname) {
+    url <- paste0("https://github.com/google/fonts/blob/2f6c0a183f9d435853bef472301f83ea3902ff69/ofl/arsenal/", fname)
+
+    message(paste0("\nDownloading ", url))
+
+    download.file(url, paste0("~/.fonts/arsenal/", fname))
+  }
+
+  download.font("Arsenal-Bold.ttf")
+  download.font("Arsenal-BoldItalic.ttf")
+  download.font("Arsenal-Italic.ttf")
+  download.font("Arsenal-Regular.ttf")
+
   system("fc-cache -f ~/.fonts")
 }
 
@@ -15,9 +25,6 @@ library(shiny)
 library(Cairo)
 
 devtools::load_all("eyeglass")
-
-# suppressMessages(extrafont::font_import("eyeglass/inst/fonts/arsenal/", prompt = FALSE))
-# suppressMessages(extrafont::loadfonts())
 
 addResourcePath("eyeglass", "www")
 

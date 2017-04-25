@@ -143,7 +143,7 @@ trendsTab <- function(input, output, session) {
       ) +
       theme_bw() +
       theme(
-        text = element_text(family = "Arsenal", size = 14),
+        text = element_text(family = "Helvetica-Narrow", size = 14),
         plot.title = element_text(
           size = rel(1.5),
           margin = margin(0, 0, 10 , 0)

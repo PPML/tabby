@@ -36,7 +36,7 @@ downloadController <- function(input, output, session, plot, data) {
       strftime(Sys.Date(), "tb-plot-%F.png")
     },
     content = function(file) {
-      png(file, res = 72, width = 720)
+      png(file, res = 72, width = 13, height = 9, units = "in")
       print(plot())
       dev.off()
     }
@@ -48,10 +48,10 @@ downloadController <- function(input, output, session, plot, data) {
     },
     content = function(file) {
       this <- plot()
-      pdf(file, width = 9, height = 7, title = this$plot$title)
+
+      pdf(file, width = 11, height = 8, title = this$plot$title)
       print(this)
       dev.off()
-      embed_fonts(file, outfile = file)
     }
   )
 
@@ -63,7 +63,7 @@ downloadController <- function(input, output, session, plot, data) {
       tmp <- tempfile(fileext = "jpg")
       on.exit(unlink(tmp))
 
-      jpeg(tmp, res = 72, width = 680)
+      jpeg(tmp, res = 72, width = 13, height = 9, units = "in")
       print(plot())
       dev.off()
 

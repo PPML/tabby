@@ -73,13 +73,13 @@ tabSidePanel <- function(id, active = FALSE, comparators = NULL,
                 step = years$step,
                 sep = "",
                 dragRange = FALSE,
-                ticks = FALSE,
-                animate = animationOptions(
-                  interval = 500,
-                  loop = TRUE,
-                  playButton = icon("play"),
-                  pauseButton = icon("pause")
-                )
+                ticks = FALSE
+                # animate = animationOptions(
+                #   interval = 500,
+                #   loop = TRUE,
+                #   playButton = icon("play"),
+                #   pauseButton = icon("pause")
+                # )
               )
             )
           },
