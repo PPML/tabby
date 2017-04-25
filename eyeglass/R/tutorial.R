@@ -46,9 +46,9 @@ includeTour <- function() {
       tags$div(
         tags$h5("Comparators"),
         tags$p("There are three possible comparators for the model outputs."),
-        tags$p(tags$strong("Estimated values"), "-"),
-        tags$p(tags$strong("Percentage of base case value in the same year"), "-"),
-        tags$p(tags$strong("Percentage of base case value in 2016"), "-")
+        tags$p(tags$strong("Estimated values"), "- N/A"),
+        tags$p(tags$strong("Percentage of base case value in the same year"), "- N/A"),
+        tags$p(tags$strong("Percentage of base case value in 2016"), "- N/A")
       )
     )
   })
@@ -59,9 +59,9 @@ includeTour <- function() {
       tags$div(
         tags$h5("Populations"),
         tags$p("There are three possible populations."),
-        tags$p(tags$strong("Total"), "- model results for the entire US population."),
-        tags$p(tags$strong("US-born"), "- model results for the US, US-born population"),
-        tags$p(tags$strong("Foreign-born"), "- model results for the US, foreign-born population")
+        tags$p(tags$strong("Total"), "- total US population."),
+        tags$p(tags$strong("US-born"), "- US, US-born population"),
+        tags$p(tags$strong("Foreign-born"), "- US, foreign-born population")
       )
     )
   })
@@ -72,10 +72,10 @@ includeTour <- function() {
       tags$div(
         tags$h5("Age groups"),
         tags$p("There are 4 possible age groups."),
-        tags$p(tags$strong("All"), "- model results for all ages."),
-        tags$p(tags$strong("0 to 24"), "- model results for ages 0 to 24."),
-        tags$p(tags$strong("25 to 64"), "- model results for ages 25 to 64."),
-        tags$p(tags$strong("64+"), "- model results for ages 65 and older.")
+        tags$p(tags$strong("All"), "- N/A"),
+        tags$p(tags$strong("0 to 24"), "- N/A"),
+        tags$p(tags$strong("25 to 64"), "- N/A"),
+        tags$p(tags$strong("64+"), "- N/A")
       )
     )
   })
@@ -86,11 +86,11 @@ includeTour <- function() {
       tags$div(
         tags$h5("Outcomes"),
         tags$p("There are 5 model outcomes."),
-        tags$p(tags$strong("New TB infections"), "-"),
-        tags$p(tags$strong("LTBI prevalence"), "-"),
-        tags$p(tags$strong("TB incidence"), "-"),
-        tags$p(tags$strong("MDR-TB in new TB cases"), "-"),
-        tags$p(tags$strong("TB-related deaths"), "-")
+        tags$p(tags$strong("New TB infections"), "- N/A"),
+        tags$p(tags$strong("LTBI prevalence"), "- N/A"),
+        tags$p(tags$strong("TB incidence"), "- N/A"),
+        tags$p(tags$strong("MDR-TB in new TB cases"), "- N/A"),
+        tags$p(tags$strong("TB-related deaths"), "- N/A")
       )
     )
   })
