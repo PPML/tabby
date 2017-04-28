@@ -163,6 +163,15 @@ body {
   opacity: 1.0;
 }
 
+#ages-year-controls-content label {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+#ages-year-controls-content input {
+  width: 102px;
+}
+
 .flex-centered {
 	display: -ms-flexbox;
 	display: -webkit-flex;

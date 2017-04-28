@@ -39,3 +39,11 @@ icon2unicode <- function(icon) {
 
   .faIconLookup[.faIconLookup$class == icon, "unicode"]
 }
+
+darken <- function(hex, factor = 1.4){
+  col <- col2rgb(hex)
+  col <- col / factor
+  col <- rgb(t(col), maxColorValue = 255)
+  names(col) <- names(hex)
+  col
+}

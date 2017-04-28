@@ -62,24 +62,17 @@ estimatesTab <- function(input, output, session, tour = NULL) {
     np <- nearPoints(data(), input$click, "year_adj", "value", maxpoints = 1)
 
     if (NROW(np)) {
-      regions <<- np %>%
-        bind_rows(regions) %>%
-        distinct(outcome, scenario, population, year, year_adj, value)
-    }
-  })
-
-  dataRange <- reactive({
-    .ESTIMATES %>%
-      filter(
-        comparator == input$comparator,
-        population == input$population,
-        outcome == input$outcome,
-        scenario %in% c(input$intervention, input$analysis, "base_case")
-      ) %>%
-      .$value %>% {
-        c(0, max(.))
+      if (!is.null(regions) && NROW(inner_join(regions, np))) {
+        regions <<- anti_join(
+          regions, np,
+          by = c("outcome", "scenario", "population", "year", "year_adj", "value")
+        )
+      } else {
+        regions <<- np %>%
+          bind_rows(regions) %>%
+          distinct(outcome, scenario, population, year, year_adj, value)
       }
-
+    }
   })
 
   labels <- reactive({
@@ -110,7 +103,6 @@ estimatesTab <- function(input, output, session, tour = NULL) {
       ),
       data = label_df,
       # fill = "transparent",
-      family = "Arsenal",
       fontface = "bold",
       size = 4,
       box.padding = unit(0.20, "lines"),
@@ -145,7 +137,6 @@ estimatesTab <- function(input, output, session, tour = NULL) {
     session$clientData[[paste0("output_", outputName , "_height")]]
 
     data <- spread(data(), type, value)
-    dataRange <- isolate(dataRange())
 
     title <- sprintf(
       "%s, in the %s, %s",
@@ -192,8 +183,7 @@ estimatesTab <- function(input, output, session, tour = NULL) {
         expand = c(0, 0)
       ) +
       scale_y_continuous(
-        name = outcomes$estimates$formatted[[input$outcome]],
-        limits = dataRange
+        name = outcomes$estimates$formatted[[input$outcome]]
       ) +
       labs(
         title = title,
@@ -205,7 +195,7 @@ estimatesTab <- function(input, output, session, tour = NULL) {
       ) +
       theme_bw() +
       theme(
-        text = element_text(family = "Helvetica-Narrow", size = 14),
+        text = element_text(family = settings$font, size = 14),
         plot.title = element_text(
           size = rel(1.5),
           margin = margin(0, 0, 10 , 0)

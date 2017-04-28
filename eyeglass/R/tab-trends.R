@@ -32,20 +32,6 @@ trendsTab <- function(input, output, session) {
       )
   })
 
-  dataRange <- reactive({
-    .TRENDS %>%
-      filter(
-        comparator == input$comparator,
-        population == input$population,
-        outcome == input$outcome,
-        scenario %in% c(input$intervention, input$analysis, "base_case")
-      ) %>%
-      .$value %>% {
-        c(0, max(.))
-      }
-
-  })
-
   output$title <- reactive({
     req(input$outcome, input$population, input$age)
     sprintf(
@@ -69,7 +55,6 @@ trendsTab <- function(input, output, session) {
     session$clientData[[paste0("output_", outputName , "_height")]]
 
     data <- spread(data(), type, value)
-    dataRange <- isolate(dataRange())
 
     title <- sprintf(
       "%s, in the %s, %s",
@@ -123,8 +108,7 @@ trendsTab <- function(input, output, session) {
         breaks = c(2016, 2025, 2050, 2075, 2100)
       ) +
       scale_y_continuous(
-        name = outcomes$trends$formatted[[input$outcome]],
-        limits = dataRange
+        name = outcomes$trends$formatted[[input$outcome]]
       ) +
       labs(
         title = title,
@@ -143,7 +127,7 @@ trendsTab <- function(input, output, session) {
       ) +
       theme_bw() +
       theme(
-        text = element_text(family = "Helvetica-Narrow", size = 14),
+        text = element_text(family = settings$font, size = 14),
         plot.title = element_text(
           size = rel(1.5),
           margin = margin(0, 0, 10 , 0)

@@ -9,35 +9,40 @@
 agesTab <- function(input, output, session) {
   data <- reactive({
     req(
-      input$population, input$outcome, input$year,
-      c(input$intervention, input$analysis, "base_case")
-    )
-
-    .AGEGROUPS %>%
-      filter(
-        population == input$population,
-        outcome == input$outcome,
-        year == input$year,
-        scenario %in% c(input$intervention, input$analysis, "base_case")
-      )
-  })
-
-  allyears <- reactive({
-    req(
       input$population, input$outcome,
-      c(input$intervention, input$analysis, "base_case")
+      c(input$intervention, input$analysis, "base_case"),
+      input$year >= 2016 && input$year <= 2100
     )
 
     .AGEGROUPS %>%
       filter(
         population == input$population,
         outcome == input$outcome,
+        year == if (input$year == 2100) 2099 else input$year,
         scenario %in% c(input$intervention, input$analysis, "base_case")
       )
   })
+
+  # allyears <- reactive({
+  #   req(
+  #     input$population, input$outcome,
+  #     c(input$intervention, input$analysis, "base_case")
+  #   )
+  #
+  #   .AGEGROUPS %>%
+  #     filter(
+  #       population == input$population,
+  #       outcome == input$outcome,
+  #       scenario %in% c(input$intervention, input$analysis, "base_case")
+  #     )
+  # })
 
   output$title <- reactive({
-    req(input$outcome, input$population, input$year)
+    req(
+      input$outcome, input$population,
+      input$year >= 2016 && input$year <= 2100
+    )
+
     sprintf(
       "%s, in the %s, for %s",
       outcomes$ages$labels[[input$outcome]],
@@ -62,6 +67,8 @@ agesTab <- function(input, output, session) {
       input$year
     )
 
+    dodge <- position_dodge(0.85)
+
     ggplot(data, aes(x = age_group)) +
       geom_bar(
         mapping = aes(
@@ -69,19 +76,36 @@ agesTab <- function(input, output, session) {
           fill = scenario
         ),
         stat = "identity",
-        position = "dodge"
+        position = dodge
+      ) +
+      geom_linerange(
+        mapping = aes(
+          ymin = data$ci_low,
+          ymax = data$ci_high,
+          color = scenario
+        ),
+        position = dodge
       ) +
       scale_x_discrete(
         name = "Age group",
         limits = naturalsort(unique(data$age_group))
       ) +
       scale_y_continuous(
-        name = outcomes$ages$formatted[[input$outcome]],
-        limits = c(0, max(allyears()$value))  # comment this line to demo shift y-axis breaks
+        name = outcomes$ages$formatted[[input$outcome]]
+        # limits = c(0, max(allyears()$value))  # comment this line to demo shift y-axis breaks
       ) +
       scale_fill_manual(
         name = "Scenario",
         values = settings$color[[color]],
+        labels = c(
+          "base_case" = "Base case",
+          interventions$labels,
+          analyses$formatted
+        )
+      ) +
+      scale_color_manual(
+        name = "Scenario",
+        values = darken(settings$color[[color]], 1.75),
         labels = c(
           "base_case" = "Base case",
           interventions$labels,
@@ -99,7 +123,7 @@ agesTab <- function(input, output, session) {
       ) +
       theme_bw() +
       theme(
-        text = element_text(family = "Helvetica-Narrow", size = 14),
+        text = element_text(family = settings$font, size = 14),
         plot.title = element_text(
           size = rel(1.5),
           margin = margin(0, 0, 10 , 0)

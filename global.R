@@ -296,6 +296,7 @@ analyses <- list(
 )
 
 settings <- list(
+  font = if (interactive()) "Times" else "Helvetica-Narrow",
   color = list(
     standard = c(
       "base_case" = "#8A9DA3",

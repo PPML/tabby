@@ -31,87 +31,122 @@ downloadInputs <- function(id) {
 }
 
 downloadController <- function(input, output, session, plot, data) {
+  onerror <- "tb-plot-error.gif"
+
+  generateFileName <- function(ext) {
+    function() {
+      if (is.ggplot(try(plot(), silent = TRUE))) {
+        strftime(Sys.Date(), paste0("tb-plot-%F.", ext))
+      } else {
+        onerror
+      }
+    }
+  }
+
+  getErrorGif <- function(file) {
+    download.file("https://media.giphy.com/media/3oKIPE2IyKmNgUzalq/giphy.gif", file)
+  }
+
+  plotOkay <- function(file) {
+    str_sub(file, -3) != "gif"
+  }
+
   output$png <- downloadHandler(
-    filename = function() {
-      strftime(Sys.Date(), "tb-plot-%F.png")
-    },
+    filename = generateFileName("png"),
     content = function(file) {
-      png(file, res = 72, width = 13, height = 9, units = "in")
-      print(plot())
-      dev.off()
+      if (plotOkay(file)) {
+        png(file, res = 72, width = 13, height = 9, units = "in")
+        print(plot())
+        dev.off()
+      } else {
+        getErrorGif(file)
+      }
     }
   )
 
   output$pdf <- downloadHandler(
-    filename = function() {
-      strftime(Sys.Date(), "tb-plot-%F.pdf")
-    },
+    filename = generateFileName("pdf"),
     content = function(file) {
-      this <- plot()
-
-      pdf(file, width = 11, height = 8, title = this$plot$title)
-      print(this)
-      dev.off()
+      if (plotOkay(file)) {
+        this <- plot()
+        pdf(file, width = 11, height = 8, title = this$plot$title)
+        print(this)
+        dev.off()
+      } else {
+        getErrorGif(file)
+      }
     }
   )
 
   output$pptx <- downloadHandler(
-    filename = function() {
-      strftime(Sys.Date(), "tb-plot-slide-%F.pptx")
-    },
+    filename = generateFileName("pptx"),
     content = function(file) {
-      tmp <- tempfile(fileext = "jpg")
-      on.exit(unlink(tmp))
+      if (plotOkay(file)) {
+        tmp <- tempfile(fileext = "jpg")
+        on.exit(unlink(tmp))
 
-      jpeg(tmp, res = 72, width = 13, height = 9, units = "in")
-      print(plot())
-      dev.off()
+        this <- try(plot(), silent = TRUE)
 
-      read_pptx() %>%
-        add_slide(layout = "Title and Content", master = "Office Theme") %>%
-        ph_with_text(type = "title", str = "") %>%
-        ph_with_img(type = "body", src = tmp, width = 7, height = 5) %>%
-        print(target = file)
+        jpeg(tmp, res = 72, width = 13, height = 9, units = "in")
+
+        if (is.ggplot(this)) {
+          print(this)
+        }
+
+        dev.off()
+
+        read_pptx() %>%
+          add_slide(layout = "Title and Content", master = "Office Theme") %>%
+          ph_with_text(type = "title", str = "") %>%
+          ph_with_img(type = "body", src = tmp, width = 7, height = 5) %>%
+          print(target = file)
+      } else {
+        getErrorGif(file)
+      }
     }
   )
 
   output$xlsx <- downloadHandler(
-    filename = function() {
-      strftime(Sys.Date(), "tb-plot-data-%F.xlsx")
-    },
+    filename = generateFileName("xlsx"),
     content = function(file) {
-      data() %>%
-        mutate(
-          year = ifelse(year == 2000, 2016, year)
-        ) %>%
-        spread(type, value) %>%
-        select(
-          outcome, scenario, age_group, year, mean, ci_high, ci_low
-        ) %>%
-        openxlsx::write.xlsx(
-          file = file,
-          colNames = TRUE
-        )
+      if (plotOkay(file)) {
+        data() %>%
+          mutate(
+            year = ifelse(year == 2000, 2016, year)
+          ) %>%
+          spread(type, value) %>%
+          select(
+            outcome, scenario, age_group, year, mean, ci_high, ci_low
+          ) %>%
+          openxlsx::write.xlsx(
+            file = file,
+            colNames = TRUE
+          )
+      } else {
+        getErrorGif(file)
+      }
     }
   )
 
   output$csv <- downloadHandler(
-    filename = function() {
-      strftime(Sys.Date(), "tb-plot-data-%F.csv")
-    },
+    filename = generateFileName("csv"),
     content = function(file) {
-      data() %>%
-        mutate(
-          year = ifelse(year == 2000, 2016, year)
-        ) %>%
-        spread(type, value) %>%
-        select(
-          outcome, scenario, age_group, year, mean, ci_high, ci_low
-        ) %>%
-        write.csv(
-          file = file,
-          row.names = FALSE
-        )
+      if (plotOkay(file)) {
+        data() %>%
+          mutate(
+            year = ifelse(year == 2000, 2016, year)
+          ) %>%
+          spread(type, value) %>%
+          select(
+            outcome, scenario, age_group, year, mean, ci_high, ci_low
+          ) %>%
+          write.csv(
+            file = file,
+            row.names = FALSE
+          )
+      } else {
+        getErrorGif(file)
+      }
     }
   )
 }

@@ -64,22 +64,30 @@ tabSidePanel <- function(id, active = FALSE, comparators = NULL,
               id = ns("year-controls"),
               heading = years$heading,
               collapsed = FALSE,
-              sliderInput(
+              # sliderInput(
+              #   inputId = ns("year"),
+              #   label = NULL,
+              #   min = years$min,
+              #   max = years$max,
+              #   value = years$min,
+              #   step = years$step,
+              #   sep = "",
+              #   dragRange = FALSE,
+              #   ticks = FALSE
+              #   # animate = animationOptions(
+              #   #   interval = 500,
+              #   #   loop = TRUE,
+              #   #   playButton = icon("play"),
+              #   #   pauseButton = icon("pause")
+              #   # )
+              # ),
+              numericInput(
                 inputId = ns("year"),
-                label = NULL,
+                label = "2016 through 2100",
+                value = years$min,
                 min = years$min,
                 max = years$max,
-                value = years$min,
-                step = years$step,
-                sep = "",
-                dragRange = FALSE,
-                ticks = FALSE
-                # animate = animationOptions(
-                #   interval = 500,
-                #   loop = TRUE,
-                #   playButton = icon("play"),
-                #   pauseButton = icon("pause")
-                # )
+                step = 1
               )
             )
           },
