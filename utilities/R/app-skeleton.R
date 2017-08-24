@@ -14,8 +14,8 @@ estimates <- list(
       png = "estimatesPNG",
       pdf = "estimatesPDF",
       pptx = "estimatesPPTX",
-      xlsx = "esimtatesXLSX",
-      csv = "estimatesCSV"
+      csv = "estimatesCSV",
+      xlsx = "esimtatesXLSX"
     ),
     panels = list(
       control = "estimatesControlPanel",
@@ -177,8 +177,8 @@ estimates <- list(
       "PNG",
       "PDF",
       "PPTX",
-      "XLSX",
-      "CSV"
+      "CSV",
+      "XLSX"
     )
   )
 )
@@ -199,8 +199,8 @@ trends <- list(
       png = "trendsPNG",
       pdf = "trendsPDF",
       pptx = "trendsPPTX",
-      xlsx = "trendsXLSX",
-      csv = "trendsCSV"
+      csv = "trendsCSV",
+      xlsx = "trendsXLSX"
     ),
     panels = list(
       control = "trendsControlPanel",
@@ -352,8 +352,8 @@ trends <- list(
       "PNG",
       "PDF",
       "PPTX",
-      "XLSX",
-      "CSV"
+      "CSV",
+      "XLSX"
     )
   )
 )
@@ -374,8 +374,8 @@ agegroups <- list(
       png = "agegroupsPNG",
       pdf = "agegroupsPDF",
       pptx = "agegroupsPPTX",
-      xlsx = "agegroupsXLSX",
-      csv = "agegroupsCSV"
+      csv = "agegroupsCSV",
+      xlsx = "agegroupsXLSX"
     ),
     panels = list(
       control = "agegroupsControlPanel",
@@ -510,8 +510,8 @@ agegroups <- list(
       "PNG",
       "PDF",
       "PPTX",
-      "XLSX",
-      "CSV"
+      "CSV",
+      "XLSX"
     )
   )
 )

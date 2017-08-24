@@ -1,5 +1,6 @@
 function(input, output, session) {
   # estimates server ----
+  # __calculate data ----
   estimatesData <- reactive({
     req(
       input[[estimates$IDs$controls$comparators]], input[[estimates$IDs$controls$outcomes]],
@@ -21,6 +22,7 @@ function(input, output, session) {
       )
   })
 
+  # __interactive plot logic ----
   estimatesRegions <- NULL
   makeReactiveBinding("estimatesRegions")
 
@@ -59,6 +61,7 @@ function(input, output, session) {
     }
   })
 
+  # __generate point labels ----
   estimatesLabels <- reactive({
     if (is.null(estimatesRegions)) {
       return(NULL)
@@ -98,6 +101,7 @@ function(input, output, session) {
     )
   })
 
+  # __set title ----
   output[[estimates$IDs$title]] <- reactive({
     req(
       input[[estimates$IDs$controls$outcome]],
@@ -112,17 +116,15 @@ function(input, output, session) {
       estimates$ages$formatted[[input[[estimates$IDs$controls$ages]]]]
     )
 
-    session$sendCustomMessage(
-      "update-alt-text",
-      list(
-        selector = paste0("#", estimates$IDs$plot, " img"),
-        text = msg
-      )
-    )
+    session$sendCustomMessage("tabby:altupdate", list(
+      selector = paste0("#", estimates$IDs$plot),
+      alt = msg
+    ))
 
     msg
   })
 
+  # __set subtitle ----
   output[[estimates$IDs$subtitle]] <- reactive({
     req(
       input[[estimates$IDs$controls$comparators]],
@@ -134,6 +136,7 @@ function(input, output, session) {
     estimates$comparators$formatted[[input[[estimates$IDs$controls$comparators]]]]
   })
 
+  # __generate plot ----
   estimatesPlot <- reactive({
     color <- if (length(input[[estimates$IDs$controls$colorblind]])) "colorblind" else "standard"
 
@@ -235,7 +238,9 @@ function(input, output, session) {
       )
   })
 
+
   # trends server ----
+  # __calculate data ----
   trendsData <- reactive({
     req(
       input[[trends$IDs$controls$comparators]],
@@ -265,6 +270,7 @@ function(input, output, session) {
       )
   })
 
+  # __set title ----
   output[[trends$IDs$title]] <- reactive({
     req(
       input[[trends$IDs$controls$outcomes]],
@@ -272,14 +278,22 @@ function(input, output, session) {
       input[[trends$IDs$controls$ages]]
     )
 
-    sprintf(
+    title <- sprintf(
       "%s, in the %s, %s",
       trends$outcomes$labels[[input[[trends$IDs$controls$outcomes]]]],
       trends$populations$formatted[[input[[trends$IDs$controls$populations]]]],
       trends$ages$formatted[[input[[trends$IDs$controls$ages]]]]
     )
+
+    session$sendCustomMessage("tabby:altupdate", list(
+      selector = paste0("#", trends$IDs$plot),
+      alt = title
+    ))
+
+    title
   })
 
+  # __set subtitle ----
   output[[trends$IDs$subtitle]] <- reactive({
     req(
       input[[trends$IDs$controls$outcomes]],
@@ -290,6 +304,7 @@ function(input, output, session) {
     trends$comparators$formatted[[input[[trends$IDs$controls$comparators]]]]
   })
 
+  # __generate plot ----
   trendsPlot <- reactive({
     color <- if (length(input[[trends$IDs$controls$colorblind]])) "colorblind" else "standard"
 
@@ -406,6 +421,7 @@ function(input, output, session) {
 
 
   # ages server ----
+  # __calculate data ----
   agegroupsData <- reactive({
     req(
       input[[agegroups$IDs$controls$populations]],
@@ -433,6 +449,7 @@ function(input, output, session) {
       )
   })
 
+  # __set title ----
   output[[agegroups$IDs$title]] <- reactive({
     req(
       input[[agegroups$IDs$controls$populations]],
@@ -441,14 +458,22 @@ function(input, output, session) {
         input[[agegroups$IDs$controls$years]] <= 2100
     )
 
-    sprintf(
+    title <- sprintf(
       "%s, in the %s, for %s",
       agegroups$outcomes$labels[[input[[agegroups$IDs$controls$outcomes]]]],
       agegroups$populations$formatted[[input[[agegroups$IDs$controls$populations]]]],
       input[[agegroups$IDs$controls$years]]
     )
+
+    session$sendCustomMessage("tabby:altupdate", list(
+      selector = paste0("#", agegroups$IDs$plot),
+      alt = title
+    ))
+
+    title
   })
 
+  # __generate plot ----
   agegroupsPlot <- reactive({
     color <- if (length(input[[agegroups$IDs$controls$colorblind]])) "colorblind" else "standard"
     # outputName <- session$ns("plot")

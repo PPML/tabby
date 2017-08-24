@@ -5,6 +5,7 @@ estimatesVisualizationPanel <- function() {
       title = estimates$IDs$title,
       subtitle = estimates$IDs$subtitle,
       plot = estimates$IDs$plot,
+      alt = "New TB infections, in the total US population, all age groups",
       brush = brushOpts(
         id = estimates$IDs$brush,
         fill = "transparent",
@@ -24,7 +25,8 @@ trendsVisualizationPanel <- function() {
       id = trends$IDs$panels$visualization,
       title = trends$IDs$title,
       subtitle = trends$IDs$subtitle,
-      plot = trends$IDs$plot
+      plot = trends$IDs$plot,
+      alt = "New TB infections, in the total US population, all age groups"
     ),
     class = "trends-tab"
   )
@@ -36,13 +38,14 @@ agegroupsVisualizationPanel <- function() {
       id = agegroups$IDs$panels$visualization,
       title = agegroups$IDs$title,
       subtitle = NULL,
-      plot = agegroups$IDs$plot
+      plot = agegroups$IDs$plot,
+      alt = "LTBI prevalence (per million), in the total US population, for 2016"
     ),
     class = "agegroups-tab"
   )
 }
 
-visualizationPanel <- function(id, title, subtitle, plot, brush = NULL,
+visualizationPanel <- function(id, title, subtitle, plot, alt = NULL, brush = NULL,
                                click = NULL, dblclick = NULL, active = FALSE) {
   class <- paste0(id, "-tab")
 
@@ -65,7 +68,9 @@ visualizationPanel <- function(id, title, subtitle, plot, brush = NULL,
           tag = tags$div(
             id = plot,
             class = "shiny-plot-output",
-            style = "width: 100%; height: 700px;"
+            style = "width: 100%; height: 700px;",
+            `data-alt` = alt,
+            tags$img(alt = alt)
           )
         ),
         if (!is.null(brush)) formatOptNames(brush, "brush"),
