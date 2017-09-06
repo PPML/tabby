@@ -77,30 +77,32 @@ downloadButtonBar <- function(ids, heading, labels, aria = NULL) {
       class = "control-label",
       heading
     ),
-    do.call(
-      tagAppendAttributes,
-      c(
-        list(
-          tag = tags$div(
-            class = "btn-group",
-            role = "group",
-            Map(
-              function(id, label) {
-                tags$a(
-                  id = id,
-                  class = "btn btn-default shiny-download-link",
-                  href = "",
-                  target = "_blank",
-                  download = NA,
-                  label
-                )
-              },
-              ids,
-              labels
+    tags$div(
+      do.call(
+        tagAppendAttributes,
+        c(
+          list(
+            tag = tags$div(
+              class = "btn-group",
+              role = "group",
+              Map(
+                function(id, label) {
+                  tags$a(
+                    id = id,
+                    class = "btn btn-default shiny-download-link",
+                    href = "",
+                    target = "_blank",
+                    download = NA,
+                    label
+                  )
+                },
+                ids,
+                labels
+              )
             )
-          )
-        ),
-        aria
+          ),
+          aria
+        )
       )
     )
   )

@@ -7,6 +7,9 @@ fluidPage(
   # ),
   includeScript("www/js/update-alt-text.js"),
   includeScript("www/js/tab-keypress.js"),
+  tags$head(
+    tags$style(type = "text/css", ".recalculating { opacity: 1.0; }")
+  ),
   fluidRow(
     column(
       width = 12,

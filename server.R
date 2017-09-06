@@ -23,53 +23,49 @@ function(input, output, session) {
   })
 
   # __interactive plot logic ----
-  estimatesRegions <- NULL
-  makeReactiveBinding("estimatesRegions")
-
-  observeEvent(input[[estimates$IDs$brush]], {
-    bp <- brushedPoints(estimatesData(), input[[estimates$IDs$brush]], "year_adj", "value")
-
-    if (NROW(bp)) {
-      estimatesRegions <<- bp %>%
-        bind_rows(estimatesRegions) %>%
-        distinct(outcome, scenario, population, year, year_adj, value)
-    }
-  })
-
-  observeEvent(estimatesData(), {
-    estimatesRegions <<- NULL
-  })
-
-  observeEvent(input[[estimates$IDs$dblclick]], {
-    estimatesRegions <<- NULL
-  })
-
-  observeEvent(input[[estimates$IDs$click]], {
-    np <- nearPoints(estimatesData(), input[[estimates$IDs$click]], "year_adj", "value", maxpoints = 1)
-
-    if (NROW(np)) {
-      if (!is.null(estimatesRegions) && NROW(inner_join(estimatesRegions, np))) {
-        estimatesRegions <<- anti_join(
-          estimatesRegions, np,
-          by = c("outcome", "scenario", "population", "year", "year_adj", "value")
-        )
-      } else {
-        estimatesRegions <<- np %>%
-          bind_rows(estimatesRegions) %>%
-          distinct(outcome, scenario, population, year, year_adj, value)
-      }
-    }
-  })
+  # estimatesRegions <- NULL
+  # makeReactiveBinding("estimatesRegions")
+  #
+  # observeEvent(input[[estimates$IDs$brush]], {
+  #   bp <- brushedPoints(estimatesData(), input[[estimates$IDs$brush]], "year_adj", "value")
+  #
+  #   if (NROW(bp)) {
+  #     estimatesRegions <<- bp %>%
+  #       bind_rows(estimatesRegions) %>%
+  #       distinct(outcome, scenario, population, year, year_adj, value)
+  #   }
+  # })
+  #
+  # observeEvent(estimatesData(), {
+  #   estimatesRegions <<- NULL
+  # })
+  #
+  # observeEvent(input[[estimates$IDs$dblclick]], {
+  #   estimatesRegions <<- NULL
+  # })
+  #
+  # observeEvent(input[[estimates$IDs$click]], {
+  #   np <- nearPoints(estimatesData(), input[[estimates$IDs$click]], "year_adj", "value", maxpoints = 1)
+  #
+  #   if (NROW(np)) {
+  #     if (!is.null(estimatesRegions) && NROW(inner_join(estimatesRegions, np))) {
+  #       estimatesRegions <<- anti_join(
+  #         estimatesRegions, np,
+  #         by = c("outcome", "scenario", "population", "year", "year_adj", "value")
+  #       )
+  #     } else {
+  #       estimatesRegions <<- np %>%
+  #         bind_rows(estimatesRegions) %>%
+  #         distinct(outcome, scenario, population, year, year_adj, value)
+  #     }
+  #   }
+  # })
 
   # __generate point labels ----
   estimatesLabels <- reactive({
-    if (is.null(estimatesRegions)) {
-      return(NULL)
-    }
-
     padding_x <- 5
 
-    label_df <- estimatesRegions %>%
+    label_df <- estimatesData() %>%
       group_by(year) %>%
       mutate(
         nudge_x = ifelse(
@@ -78,8 +74,21 @@ function(input, output, session) {
           min(year_adj) - year_adj - padding_x
         )
       ) %>%
-      ungroup() %>%
-      select(scenario, year, year_adj, value, starts_with("nudge"))
+      ungroup()
+
+    labels <- input[[estimates$IDs$controls$labels]]
+
+    if (labels == "none") {
+      return(NULL)
+    }
+
+    if (labels == "means") {
+      label_df <- filter(label_df, type == "mean")
+    } else if (labels == "intervals") {
+      label_df <- filter(label_df, type == "ci_high" | type == "ci_low")
+    }
+
+    label_df <- select(label_df, scenario, year, year_adj, value, starts_with("nudge"))
 
     geom_label_repel(
       mapping = aes(

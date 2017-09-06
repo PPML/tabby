@@ -8,6 +8,7 @@ estimates <- list(
       outcomes = "estimatesOutcomes",
       interventions = "estimatesInterventions",
       analyses = "estimatesAnalyses",
+      labels = "estimatesLabels",
       colorblind = "estimatesColorblind"
     ),
     downloads = list(
@@ -169,6 +170,21 @@ estimates <- list(
     formatted = c(
       "scenario_1" = "No transmission within\nthe US after 2016",
       "scenario_2" = "No LTBI among\nimmigrants after 2016"
+    )
+  ),
+  labels = list(
+    heading = "Labels",
+    values = c(
+      "none",
+      "means",
+      "intervals",
+      "all"
+    ),
+    labels = c(
+      "None" = "none",
+      "Mean values" = "means",
+      "Confidence intervals" = "intervals",
+      "All" = "all"
     )
   ),
   downloads = list(

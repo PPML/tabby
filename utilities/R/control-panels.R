@@ -42,6 +42,11 @@ estimatesControlPanel  <- function() {
       labels = estimates$analyses$labels,
       values = estimates$analyses$values
     ),
+    labels = selectInput(
+      inputId = estimates$IDs$controls$labels,
+      label = estimates$labels$heading,
+      choices = estimates$labels$labels
+    ),
     colorblind = checkboxGroup2(
       id = estimates$IDs$controls$colorblind,
       heading = "Options",
@@ -169,7 +174,8 @@ agegroupsControlPanel <- function() {
 controlPanel <- function(class, active = FALSE, comparators = NULL,
                          populations = NULL, ages = NULL, years = NULL,
                          outcomes = NULL, interventions = NULL,
-                         analyses = NULL, colorblind = NULL, downloads = NULL) {
+                         analyses = NULL, labels = NULL, colorblind = NULL,
+                         downloads = NULL) {
   tags$div(
     class = class,
     class = paste(c(class, "tab-pane", if (active) "active"), collapse = " "),
@@ -180,6 +186,7 @@ controlPanel <- function(class, active = FALSE, comparators = NULL,
     outcomes,
     interventions,
     analyses,
+    labels,
     colorblind,
     downloads
   )
