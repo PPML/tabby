@@ -132,20 +132,38 @@ function(input, output, session) {
           ymin = bottom_bound,
           ymax = top_bound
         ),
-        fill = "#EBEBEB"
+        fill = "#EEEEEE"
       ) +
       geom_pointrange(
         mapping = aes(
           year_adj, mean,
           ymin = ci_low, ymax = ci_high,
-          color = scenario
+          color = scenario,
+          shape = scenario,
+          fill = scenario
         ),
-        fatten = 2
+        fatten = 4
       ) +
       estimatesLabels() +
       scale_color_manual(
         name = "Scenario",
-        values = plots$color[[color]],
+        values = viridis(length(
+          c("base_case", estimates$interventions$labels, estimates$analyses$labels)
+        )),
+        labels = c(
+          "base_case" = "Base case",
+          estimates$interventions$labels,
+          estimates$analyses$formatted
+        )
+      ) +
+      scale_shape_manual(
+        name = "Scenario",
+        values = stats::setNames(
+          seq_along(
+            c("base_case", estimates$interventions$labels, estimates$analyses$formatted)
+          ),
+          c("base_case", estimates$interventions$labels, estimates$analyses$formatted)
+        ),
         labels = c(
           "base_case" = "Base case",
           estimates$interventions$labels,
@@ -168,7 +186,8 @@ function(input, output, session) {
       ) +
       guides(
         color = guide_legend(nrow = min(n_distinct(data$scenario), 2)),
-        linetype = FALSE
+        shape = guide_legend(nrow = min(n_distinct(data$scenario), 2)),
+        fill = FALSE
       ) +
       theme_bw() +
       theme(
@@ -206,7 +225,6 @@ function(input, output, session) {
         plot.subtitle = element_blank()
       )
   })
-
 
   # trends server ----
   # __calculate data ----
@@ -284,6 +302,12 @@ function(input, output, session) {
     data <- spread(trendsData(), type, value)
 
     title <- trendsTitle()
+    guide <- guide_legend(
+      title = "Scenario",
+      nrow = min(n_distinct(data$scenario), 2)
+    )
+
+    browser()
 
     ggplot(data) +
       geom_ribbon(
@@ -291,8 +315,7 @@ function(input, output, session) {
           x = year,
           ymin = ci_low,
           ymax = ci_high,
-          fill = scenario,
-          linetype = scenario == "base_case"
+          fill = scenario
         ),
         alpha = 0.3
       ) +
@@ -301,29 +324,57 @@ function(input, output, session) {
           x = year,
           y = mean,
           color = scenario,
-          linetype = scenario == "base_case"
+          linetype = scenario
         ),
         size = 1.05,
         linejoin = "round"
       ) +
       scale_fill_manual(
-        values = plots$color[[color]],
-        labels = c(
-          "base_case" = "Base case",
-          trends$interventions$labels,
-          trends$analyses$formatted
+        values = setNames(
+          plots$color[[color]],
+          c(
+            "base_case",
+            names(trends$interventions$labels),
+            names(trends$analyses$labels)
+          )
         )
+        # labels = c(
+        #   "base_case" = "Base case",
+        #   trends$interventions$labels,
+        #   trends$analyses$formatted
+        # )
       ) +
       scale_color_manual(
-        values = plots$color[[color]],
-        labels = c(
-          "base_case" = "Base case",
-          trends$interventions$labels,
-          trends$analyses$formatted
+        values = setNames(
+          plots$color[[color]],
+          c(
+            "base_case",
+            names(trends$interventions$labels),
+            names(trends$analyses$labels)
+          )
         )
+        # labels = c(
+        #   "base_case" = "Base case",
+        #   trends$interventions$labels,
+        #   trends$analyses$formatted
+        # )
       ) +
       scale_linetype_manual(
-        values = c("FALSE" = "solid", "TRUE" = "22")
+        values = setNames(
+          seq_along(
+            c("base_case", trends$interventions$labels, trends$analyses$formatted)
+          ),
+          c(
+            "base_case",
+            names(trends$interventions$labels),
+            names(trends$analyses$labels)
+          )
+        )
+        # labels = c(
+        #   "base_case" = "Base case",
+        #   trends$interventions$labels,
+        #   trends$analyses$formatted
+        # )
       ) +
       scale_x_continuous(
         name = "Year",
@@ -337,15 +388,9 @@ function(input, output, session) {
         subtitle = trends$comparators$formatted[[input[[trends$IDs$controls$comparators]]]]
       ) +
       guides(
-        color = guide_legend(
-          title = "Scenario",
-          nrow = min(n_distinct(data$scenario), 2)
-        ),
-        fill = guide_legend(
-          title = "Scenario",
-          nrow = min(n_distinct(data$scenario), 2)
-        ),
-        linetype = FALSE
+        color = guide,
+        fill = guide,
+        linetype = guide
       ) +
       theme_bw() +
       theme(

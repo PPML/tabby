@@ -6,7 +6,7 @@
 #' @details
 #'
 #' The `results_*` functions return the raw data, where as `data_*` functions
-#' return formatted results ready for use in the eyeglass application.
+#' return formatted results ready for use in the tabby application.
 #'
 #' @section Outcomes:
 #'
@@ -62,8 +62,8 @@ data_estimates <- function() {
     filter(
       (scenario != "base_case" & year != 2016) | scenario == "base_case"
     ) %>%
+    mutate_if(is.factor, as.character) %>%
     mutate(
-
       year = recode(
         year,
         `2016` = 2000,
@@ -80,11 +80,8 @@ data_estimates <- function() {
 #' @export
 data_trends <- function() {
   results_trends() %>%
-    # filter(
-    #   (scenario != "base_case" & year != 2016) | scenario == "base_case",
-    #   year == 2016 | year == 2099 | year %% 5 == 0
-    # ) %>%
-    gather(type, value, mean, ci_high, ci_low)
+    gather(type, value, mean, ci_high, ci_low) %>%
+    mutate_if(is.factor, as.character)
 }
 
 #' @rdname model-results
@@ -95,5 +92,6 @@ data_agegroups <- function() {
       age_group = str_replace(age_group, "_", "-"),
       age_group = str_replace(age_group, "p$", "+")
     ) %>%
-    rename(type = statistic)
+    rename(type = statistic) %>%
+    mutate_if(is.factor, as.character)
 }
