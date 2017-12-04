@@ -1,4 +1,9 @@
-radioButtons2 <- function(id, heading, labels, values, selected, ...) {
+radioButtons2 <- function(id, heading, labels, values, selected, ...,
+                          descriptions = NULL) {
+  if (is.null(descriptions)) {
+    descriptions <- rep.int("", length(labels))
+  }
+
   tags$div(
     id = id,
     class = "shiny-input-radiogroup shiny-input-container",
@@ -12,7 +17,7 @@ radioButtons2 <- function(id, heading, labels, values, selected, ...) {
     tags$div(
       class = "shiny-options-group",
       Map(
-        function(lab, val, sel) {
+        function(lab, val, sel, desc) {
           tags$div(
             class = "radio",
             role = "radio",
@@ -27,18 +32,38 @@ radioButtons2 <- function(id, heading, labels, values, selected, ...) {
               tags$span(
                 lab
               )
-            )
+            ),
+            if (desc != "") {
+              tags$span(
+                class = "fa fa-question-circle-o",
+                `data-toggle` = "tooltip",
+                `data-placement` = "top",
+                title = desc,
+                `aria-describedby` = "#outcomeDescription",
+                tags$span(
+                  id = "outcomeDescription",
+                  class = "sr-only",
+                  `aria-hidden` = TRUE,
+                  desc
+                )
+              )
+            }
           )
         },
         labels,
         values,
-        selected
+        selected,
+        descriptions
       )
     )
   )
 }
 
-checkboxGroup2 <- function(id, heading, labels, values) {
+checkboxGroup2 <- function(id, heading, labels, values, descriptions = NULL) {
+  if (is.null(descriptions)) {
+    descriptions <- rep.int("", length(labels))
+  }
+
   tags$div(
     id = id,
     class = "shiny-input-checkboxgroup shiny-input-container",
@@ -50,7 +75,7 @@ checkboxGroup2 <- function(id, heading, labels, values) {
     tags$div(
       class = "shiny-options-group",
       Map(
-        function(lab, val) {
+        function(lab, val, desc) {
           tags$div(
             class = "checkbox",
             role = "checkbox",
@@ -61,11 +86,27 @@ checkboxGroup2 <- function(id, heading, labels, values) {
                 value = val,
                 tags$span(lab)
               )
-            )
+            ),
+            if (desc != "") {
+              tags$span(
+                class = "fa fa-question-circle-o",
+                `data-toggle` = "tooltip",
+                `data-placement` = "top",
+                title = desc,
+                `aria-describedby` = "#outcomeDescription",
+                tags$span(
+                  id = "outcomeDescription",
+                  class = "sr-only",
+                  `aria-hidden` = TRUE,
+                  desc
+                )
+              )
+            }
           )
         },
         labels,
-        values
+        values,
+        descriptions
       )
     )
   )

@@ -1,0 +1,51 @@
+font: Helvetica-Narrow
+color:
+  standard:
+  - '#8A9DA3'
+  - '#C7351E'
+  - '#5BBCD6'
+  - '#7B6DA8'
+  - '#F9AD00'
+  - '#00A08A'
+  - '#ECCBAE'
+  - '#046C9A'
+colorblind:
+  - '#999999'
+  - '#D55E00'
+  - '#56B4E9'
+  - '#CC79A7'
+  - '#000000'
+  - '#009E73'
+  - '#E69F00'
+  - '#0072B2'
+region:
+  year:
+    - 2000.0
+    - 2025.0
+    - 2050.0
+    - 2075.0
+    - 2100.0
+  right_bound:
+  - 2012.0
+  - 2037.0
+  - 2062.0
+  - 2087.0
+  - 2112.0
+  left_bound:
+  - 1988.0
+  - 2013.0
+  - 2038.0
+  - 2063.0
+  - 2088.0
+  top_bound:
+  - .inf
+  - .inf
+  - .inf
+  - .inf
+  - .inf
+  bottom_bound:
+  - -.inf
+  - -.inf
+  - -.inf
+  - -.inf
+  - -.inf

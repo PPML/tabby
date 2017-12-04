@@ -1,14 +1,13 @@
 fluidPage(
-  # tags$head(
-  #   tags$link(rel = "stylesheet", href = "https://fonts.googleapis.com/css?family=Arsenal|Quicksand:400,700"),
-  #   singleton(tags$link(rel = "stylesheet", href = "eyeglass/css/main.css")),
-  #   singleton(tags$link(rel = "stylesheet", href = "eyeglass/css/notifications.css")),
-  #   singleton(tags$link(rel = "stylesheet", href = "shared/font-awesome/css/font-awesome.min.css"))
-  # ),
   includeScript("www/js/update-alt-text.js"),
   includeScript("www/js/tab-keypress.js"),
   tags$head(
-    tags$style(type = "text/css", ".recalculating { opacity: 1.0; }")
+    tags$style(
+      type = "text/css",
+      ".recalculating { opacity: 1.0; }",
+      ".nav a { cursor: pointer; }",
+      ".tooltip-inner { width: 150px; }"
+    )
   ),
   fluidRow(
     column(
@@ -76,16 +75,16 @@ fluidPage(
     column(
       width = 4,
       class = "tab-content",
-      estimatesControlPanel(),
-      trendsControlPanel(),
-      agegroupsControlPanel()
+      utilities::estimatesControlPanel(),
+      utilities::trendsControlPanel(),
+      utilities::agegroupsControlPanel()
     ),
     column(
       width = 8,
       class = "tab-content",
-      estimatesVisualizationPanel(),
-      trendsVisualizationPanel(),
-      agegroupsVisualizationPanel()
+      utilities::estimatesVisualizationPanel(),
+      utilities::trendsVisualizationPanel(),
+      utilities::agegroupsVisualizationPanel()
     )
   )
 )

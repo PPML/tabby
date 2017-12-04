@@ -1,3 +1,7 @@
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip();
+});
+
 $(document).ready(function() {
   $(".navbar").on("keypress", "a", function(e) {
     console.log("keypress");

@@ -21,5 +21,6 @@ Imports:
     naturalsort,
     extrafont,
     openxlsx,
-    officer
+    officer,
+    yaml
 RoxygenNote: 6.0.1

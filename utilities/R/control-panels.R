@@ -28,19 +28,22 @@ estimatesControlPanel  <- function() {
       heading = estimates$outcomes$heading,
       labels = estimates$outcomes$labels,
       values = estimates$outcomes$values,
-      selected = estimates$outcomes$selected
+      selected = estimates$outcomes$selected,
+      descriptions = estimates$outcomes$descriptions
     ),
     interventions = checkboxGroup2(
       id = estimates$IDs$controls$interventions,
       heading = estimates$interventions$heading,
       labels = estimates$interventions$labels,
-      values = estimates$interventions$values
+      values = estimates$interventions$values,
+      descriptions = estimates$interventions$descriptions
     ),
     analyses = checkboxGroup2(
       id = estimates$IDs$controls$analyses,
       heading = estimates$analyses$heading,
       labels = estimates$analyses$labels,
-      values = estimates$analyses$values
+      values = estimates$analyses$values,
+      descriptions = estimates$analyses$descriptions
     ),
     labels = selectInput(
       inputId = estimates$IDs$controls$labels,
@@ -90,19 +93,22 @@ trendsControlPanel <- function() {
       heading = trends$outcomes$heading,
       labels = trends$outcomes$labels,
       values = trends$outcomes$values,
-      selected = trends$outcomes$selected
+      selected = trends$outcomes$selected,
+      descriptions = trends$outcomes$descriptions
     ),
     interventions = checkboxGroup2(
       id = trends$IDs$controls$interventions,
       heading = trends$interventions$heading,
       labels = trends$interventions$labels,
-      values = trends$interventions$values
+      values = trends$interventions$values,
+      descriptions = trends$interventions$descriptions
     ),
     analyses = checkboxGroup2(
       id = trends$IDs$controls$analyses,
       heading = trends$analyses$heading,
       labels = trends$analyses$labels,
-      values = trends$analyses$values
+      values = trends$analyses$values,
+      descriptions = trends$analyses$descriptions
     ),
     colorblind = checkboxGroup2(
       id = trends$IDs$controls$colorblind,
@@ -143,19 +149,22 @@ agegroupsControlPanel <- function() {
       heading = agegroups$outcomes$heading,
       labels = agegroups$outcomes$labels,
       values = agegroups$outcomes$values,
-      selected = agegroups$outcomes$selected
+      selected = agegroups$outcomes$selected,
+      descriptions = agegroups$outcomes$descriptions
     ),
     interventions = checkboxGroup2(
       id = agegroups$IDs$controls$interventions,
       heading = agegroups$interventions$heading,
       labels = agegroups$interventions$labels,
-      values = agegroups$interventions$values
+      values = agegroups$interventions$values,
+      descriptions = agegroups$interventions$descriptions
     ),
     analyses = checkboxGroup2(
       id = agegroups$IDs$controls$analyses,
       heading = agegroups$analyses$heading,
       labels = agegroups$analyses$labels,
-      values = agegroups$analyses$values
+      values = agegroups$analyses$values,
+      descriptions = agegroups$analyses$descriptions
     ),
     colorblind = checkboxGroup2(
       id = agegroups$IDs$controls$colorblind,

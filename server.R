@@ -1,4 +1,9 @@
 function(input, output, session) {
+  ESTIMATES_DATA <- utilities::data_estimates()
+  TRENDS_DATA <- utilities::data_trends()
+  AGEGROUPS_DATA <- utilities::data_agegroups()
+
+  # (to use these headings press COMMAND+SHIFT+O)
   # estimates server ----
   # __calculate data ----
   estimatesData <- reactive({
@@ -7,7 +12,7 @@ function(input, output, session) {
       c(input[[estimates$IDs$controls$interventions]], input[[estimates$IDs$controls$analyses]], "base_case")
     )
 
-    .ESTIMATES %>%
+    ESTIMATES_DATA %>%
       filter(
         population == input[[estimates$IDs$controls$populations]],
         age_group == input[[estimates$IDs$controls$ages]],
@@ -21,45 +26,6 @@ function(input, output, session) {
         year_adj = if_else(year < 2025, year, year_adj)
       )
   })
-
-  # __interactive plot logic ----
-  # estimatesRegions <- NULL
-  # makeReactiveBinding("estimatesRegions")
-  #
-  # observeEvent(input[[estimates$IDs$brush]], {
-  #   bp <- brushedPoints(estimatesData(), input[[estimates$IDs$brush]], "year_adj", "value")
-  #
-  #   if (NROW(bp)) {
-  #     estimatesRegions <<- bp %>%
-  #       bind_rows(estimatesRegions) %>%
-  #       distinct(outcome, scenario, population, year, year_adj, value)
-  #   }
-  # })
-  #
-  # observeEvent(estimatesData(), {
-  #   estimatesRegions <<- NULL
-  # })
-  #
-  # observeEvent(input[[estimates$IDs$dblclick]], {
-  #   estimatesRegions <<- NULL
-  # })
-  #
-  # observeEvent(input[[estimates$IDs$click]], {
-  #   np <- nearPoints(estimatesData(), input[[estimates$IDs$click]], "year_adj", "value", maxpoints = 1)
-  #
-  #   if (NROW(np)) {
-  #     if (!is.null(estimatesRegions) && NROW(inner_join(estimatesRegions, np))) {
-  #       estimatesRegions <<- anti_join(
-  #         estimatesRegions, np,
-  #         by = c("outcome", "scenario", "population", "year", "year_adj", "value")
-  #       )
-  #     } else {
-  #       estimatesRegions <<- np %>%
-  #         bind_rows(estimatesRegions) %>%
-  #         distinct(outcome, scenario, population, year, year_adj, value)
-  #     }
-  #   }
-  # })
 
   # __generate point labels ----
   estimatesLabels <- reactive({
@@ -111,26 +77,30 @@ function(input, output, session) {
   })
 
   # __set title ----
-  output[[estimates$IDs$title]] <- reactive({
+  estimatesTitle <- reactive({
     req(
       input[[estimates$IDs$controls$outcome]],
       input[[estimates$IDs$controls$population]],
-      input[[estimates$IDs$controls$age]]
+      input[[estimates$IDs$controls$ages]]
     )
 
-    msg <- sprintf(
+    sprintf(
       "%s, in the %s, %s",
       estimates$outcomes$labels[[input[[estimates$IDs$controls$outcomes]]]],
       estimates$populations$formatted[[input[[estimates$IDs$controls$populations]]]],
       estimates$ages$formatted[[input[[estimates$IDs$controls$ages]]]]
     )
+  })
+
+  output[[estimates$IDs$title]] <- reactive({
+    title <- estimatesTitle()
 
     session$sendCustomMessage("tabby:altupdate", list(
       selector = paste0("#", estimates$IDs$plot),
-      alt = msg
+      alt = title
     ))
 
-    msg
+    title
   })
 
   # __set subtitle ----
@@ -149,29 +119,19 @@ function(input, output, session) {
   estimatesPlot <- reactive({
     color <- if (length(input[[estimates$IDs$controls$colorblind]])) "colorblind" else "standard"
 
-    # outputName <- session$ns("plot")
-    # session$clientData[[paste0("output_", outputName, "_width")]]
-    # session$clientData[[paste0("output_", outputName , "_height")]]
-
     data <- spread(estimatesData(), type, value)
 
-    title <- sprintf(
-      "%s, in the %s, %s",
-      estimates$outcomes$labels[[input[[estimates$IDs$controls$outcomes]]]],
-      estimates$populations$formatted[[input[[estimates$IDs$controls$populations]]]],
-      estimates$ages$formatted[[input[[estimates$IDs$controls$ages]]]]
-    )
+    title <- estimatesTitle()
 
     ggplot(data) +
       geom_rect(
-        data = .REGIONS,
+        data = as.data.frame(plots$region),
         mapping = aes(
           xmin = right_bound,
           xmax = left_bound,
           ymin = bottom_bound,
           ymax = top_bound
         ),
-        # alpha = 0.50,
         fill = "#EBEBEB"
       ) +
       geom_pointrange(
@@ -185,7 +145,7 @@ function(input, output, session) {
       estimatesLabels() +
       scale_color_manual(
         name = "Scenario",
-        values = settings$color[[color]],
+        values = plots$color[[color]],
         labels = c(
           "base_case" = "Base case",
           estimates$interventions$labels,
@@ -194,9 +154,9 @@ function(input, output, session) {
       ) +
       scale_x_continuous(
         name = "Year",
-        breaks = c(2000, 2025, 2050, 2075, 2100),
+        breaks = plots$region$year,
         labels = c("2016", "2025", "2050", "2075", "2100"),
-        limits = range(.REGIONS$right_bound, .REGIONS$left_bound),
+        limits = range(plots$region$right_bound, plots$region$left_bound),
         expand = c(0, 0)
       ) +
       scale_y_continuous(
@@ -261,7 +221,7 @@ function(input, output, session) {
       )
     )
 
-    .TRENDS %>%
+    TRENDS_DATA %>%
       filter(
         population == input[[trends$IDs$controls$populations]],
         age_group == input[[trends$IDs$controls$ages]],
@@ -280,19 +240,23 @@ function(input, output, session) {
   })
 
   # __set title ----
-  output[[trends$IDs$title]] <- reactive({
+  trendsTitle <- reactive({
     req(
       input[[trends$IDs$controls$outcomes]],
       input[[trends$IDs$controls$populations]],
       input[[trends$IDs$controls$ages]]
     )
 
-    title <- sprintf(
+    sprintf(
       "%s, in the %s, %s",
       trends$outcomes$labels[[input[[trends$IDs$controls$outcomes]]]],
       trends$populations$formatted[[input[[trends$IDs$controls$populations]]]],
       trends$ages$formatted[[input[[trends$IDs$controls$ages]]]]
     )
+  })
+
+  output[[trends$IDs$title]] <- reactive({
+    title <- trendsTitle()
 
     session$sendCustomMessage("tabby:altupdate", list(
       selector = paste0("#", trends$IDs$plot),
@@ -317,18 +281,9 @@ function(input, output, session) {
   trendsPlot <- reactive({
     color <- if (length(input[[trends$IDs$controls$colorblind]])) "colorblind" else "standard"
 
-    # outputName <- session$ns("plot")
-    # session$clientData[[paste0("output_", outputName, "_width")]]
-    # session$clientData[[paste0("output_", outputName , "_height")]]
-
     data <- spread(trendsData(), type, value)
 
-    title <- sprintf(
-      "%s, in the %s, %s",
-      trends$outcomes$labels[[input[[trends$IDs$controls$outcomes]]]],
-      trends$populations$formatted[[input[[trends$IDs$controls$populations]]]],
-      trends$ages$formatted[[input[[trends$IDs$controls$ages]]]]
-    )
+    title <- trendsTitle()
 
     ggplot(data) +
       geom_ribbon(
@@ -352,7 +307,7 @@ function(input, output, session) {
         linejoin = "round"
       ) +
       scale_fill_manual(
-        values = settings$color[[color]],
+        values = plots$color[[color]],
         labels = c(
           "base_case" = "Base case",
           trends$interventions$labels,
@@ -360,7 +315,7 @@ function(input, output, session) {
         )
       ) +
       scale_color_manual(
-        values = settings$color[[color]],
+        values = plots$color[[color]],
         labels = c(
           "base_case" = "Base case",
           trends$interventions$labels,
@@ -444,7 +399,7 @@ function(input, output, session) {
         input[[agegroups$IDs$controls$years]] <= 2100
     )
 
-    .AGEGROUPS %>%
+    AGEGROUPS_DATA %>%
       filter(
         population == input[[agegroups$IDs$controls$populations]],
         outcome == input[[agegroups$IDs$controls$outcomes]],
@@ -459,7 +414,7 @@ function(input, output, session) {
   })
 
   # __set title ----
-  output[[agegroups$IDs$title]] <- reactive({
+  agegroupsTitle <- reactive({
     req(
       input[[agegroups$IDs$controls$populations]],
       input[[agegroups$IDs$controls$outcomes]],
@@ -467,12 +422,16 @@ function(input, output, session) {
         input[[agegroups$IDs$controls$years]] <= 2100
     )
 
-    title <- sprintf(
+    sprintf(
       "%s, in the %s, for %s",
       agegroups$outcomes$labels[[input[[agegroups$IDs$controls$outcomes]]]],
       agegroups$populations$formatted[[input[[agegroups$IDs$controls$populations]]]],
       input[[agegroups$IDs$controls$years]]
     )
+  })
+
+  output[[agegroups$IDs$title]] <- reactive({
+    title <- agegroupsTitle()
 
     session$sendCustomMessage("tabby:altupdate", list(
       selector = paste0("#", agegroups$IDs$plot),
@@ -491,12 +450,7 @@ function(input, output, session) {
 
     data <- spread(agegroupsData(), type, value)
 
-    title <- sprintf(
-      "%s, in the %s, for %s",
-      agegroups$outcomes$labels[[input[[agegroups$IDs$controls$outcomes]]]],
-      agegroups$populations$formatted[[input[[agegroups$IDs$controls$populations]]]],
-      input[[agegroups$IDs$controls$years]]
-    )
+    title <- agegroupsTitle()
 
     dodge <- position_dodge(0.85)
 
@@ -526,7 +480,7 @@ function(input, output, session) {
       ) +
       scale_fill_manual(
         name = "Scenario",
-        values = settings$color[[color]],
+        values = plots$color[[color]],
         labels = c(
           "base_case" = "Base case",
           agegroups$interventions$labels,
@@ -535,7 +489,7 @@ function(input, output, session) {
       ) +
       scale_color_manual(
         name = "Scenario",
-        values = darken(settings$color[[color]], 1.75),
+        values = darken(plots$color[[color]], 1.75),
         labels = c(
           "base_case" = "Base case",
           agegroups$interventions$labels,
@@ -589,7 +543,7 @@ function(input, output, session) {
   })
 
   # downloads ----
-  # estimates png ----
+  # __estimates png ----
   output[[estimates$IDs$downloads$png]] <- downloadHandler(
     filename = "tabby-estimates-plot.png",
     content = function(file) {
@@ -599,18 +553,19 @@ function(input, output, session) {
     }
   )
 
-  # estimates pdf ----
+  # __estimates pdf ----
   output[[estimates$IDs$downloads$pdf]] <- downloadHandler(
     filename = "tabby-estimates-plot.pdf",
     content = function(file) {
       this <- estimatesPlot()
+
       pdf(file, width = 11, height = 8, title = this$plot$title)
       print(this)
       dev.off()
     }
   )
 
-  # estimates pptx ----
+  # __estimates pptx ----
   output[[estimates$IDs$downloads$pptx]] <- downloadHandler(
     filename = "tabby-estimates-plot.pptx",
     content = function(file) {
@@ -635,7 +590,7 @@ function(input, output, session) {
     }
   )
 
-  # estimates xlsx ----
+  # __estimates xlsx ----
   output[[estimates$IDs$downloads$xlsx]] <- downloadHandler(
     filename = "tabby-estimates-data.xlsx",
     content = function(file) {
@@ -654,7 +609,7 @@ function(input, output, session) {
     }
   )
 
-  # estimates csv ----
+  # __estimates csv ----
   output[[estimates$IDs$downloads$csv]] <- downloadHandler(
     filename = "tabby-estimates-data.csv",
     content = function(file) {
@@ -673,7 +628,7 @@ function(input, output, session) {
     }
   )
 
-  # trends png ----
+  # __trends png ----
   output[[trends$IDs$downloads$png]] <- downloadHandler(
     filename = "tabby-trends-plot.png",
     content = function(file) {
@@ -683,7 +638,7 @@ function(input, output, session) {
     }
   )
 
-  # trends pdf ----
+  # __trends pdf ----
   output[[trends$IDs$downloads$pdf]] <- downloadHandler(
     filename = "tabby-trends-plot.pdf",
     content = function(file) {
@@ -694,7 +649,7 @@ function(input, output, session) {
     }
   )
 
-  # trends pptx ----
+  # __trends pptx ----
   output[[trends$IDs$downloads$pptx]] <- downloadHandler(
     filename = "tabby-trends-plot.pptx",
     content = function(file) {
@@ -719,7 +674,7 @@ function(input, output, session) {
     }
   )
 
-  # trends xlsx ----
+  # __trends xlsx ----
   output[[trends$IDs$downloads$xlsx]] <- downloadHandler(
     filename = "tabby-trends-data.xlsx",
     content = function(file) {
@@ -738,7 +693,7 @@ function(input, output, session) {
     }
   )
 
-  # trends csv ----
+  # __trends csv ----
   output[[trends$IDs$downloads$csv]] <- downloadHandler(
     filename = "tabby-trends-data.csv",
     content = function(file) {
@@ -757,7 +712,7 @@ function(input, output, session) {
     }
   )
 
-  # agegroups png ----
+  # __agegroups png ----
   output[[agegroups$IDs$downloads$png]] <- downloadHandler(
     filename = "tabby-agegroups-plot.png",
     content = function(file) {
@@ -767,7 +722,7 @@ function(input, output, session) {
     }
   )
 
-  # agegroups pdf ----
+  # __agegroups pdf ----
   output[[agegroups$IDs$downloads$pdf]] <- downloadHandler(
     filename = "tabby-agegroups-plot.pdf",
     content = function(file) {
@@ -778,7 +733,7 @@ function(input, output, session) {
     }
   )
 
-  # agegroups pptx ----
+  # __agegroups pptx ----
   output[[agegroups$IDs$downloads$pptx]] <- downloadHandler(
     filename = "tabby-agegroups-plot.pptx",
     content = function(file) {
@@ -803,7 +758,7 @@ function(input, output, session) {
     }
   )
 
-  # agegroups xlsx ----
+  # __agegroups xlsx ----
   output[[agegroups$IDs$downloads$xlsx]] <- downloadHandler(
     filename = "tabby-agegroups-data.xlsx",
     content = function(file) {
@@ -822,7 +777,7 @@ function(input, output, session) {
     }
   )
 
-  # agegroups csv ----
+  # __agegroups csv ----
   output[[agegroups$IDs$downloads$csv]] <- downloadHandler(
     filename = "tabby-agegroups-data.csv",
     content = function(file) {
