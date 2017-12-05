@@ -50,12 +50,6 @@ estimatesControlPanel  <- function() {
       label = estimates$labels$heading,
       choices = estimates$labels$labels
     ),
-    colorblind = checkboxGroup2(
-      id = estimates$IDs$controls$colorblind,
-      heading = "Options",
-      labels = "Enable colorblind mode",
-      values = TRUE
-    ),
     downloads = downloadButtonBar(
       ids = estimates$IDs$downloads,
       heading = estimates$downloads$heading,
@@ -110,12 +104,6 @@ trendsControlPanel <- function() {
       values = trends$analyses$values,
       descriptions = trends$analyses$descriptions
     ),
-    colorblind = checkboxGroup2(
-      id = trends$IDs$controls$colorblind,
-      heading = "Options",
-      labels = "Enable colorblind mode",
-      values = TRUE
-    ),
     downloads = downloadButtonBar(
       ids = trends$IDs$downloads,
       heading = trends$downloads$heading,
@@ -166,12 +154,6 @@ agegroupsControlPanel <- function() {
       values = agegroups$analyses$values,
       descriptions = agegroups$analyses$descriptions
     ),
-    colorblind = checkboxGroup2(
-      id = agegroups$IDs$controls$colorblind,
-      heading = "Options",
-      labels = "Enable colorblind mode",
-      values = TRUE
-    ),
     downloads = downloadButtonBar(
       ids = agegroups$IDs$downloads,
       heading = agegroups$downloads$heading,
@@ -183,8 +165,7 @@ agegroupsControlPanel <- function() {
 controlPanel <- function(class, active = FALSE, comparators = NULL,
                          populations = NULL, ages = NULL, years = NULL,
                          outcomes = NULL, interventions = NULL,
-                         analyses = NULL, labels = NULL, colorblind = NULL,
-                         downloads = NULL) {
+                         analyses = NULL, labels = NULL, downloads = NULL) {
   tags$div(
     class = class,
     class = paste(c(class, "tab-pane", if (active) "active"), collapse = " "),
@@ -196,7 +177,6 @@ controlPanel <- function(class, active = FALSE, comparators = NULL,
     interventions,
     analyses,
     labels,
-    colorblind,
     downloads
   )
 }

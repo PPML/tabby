@@ -28,7 +28,7 @@ output.
 }
 \details{
 The `results_*` functions return the raw data, where as `data_*` functions
-return formatted results ready for use in the eyeglass application.
+return formatted results ready for use in the tabby application.
 }
 \section{Outcomes}{
 

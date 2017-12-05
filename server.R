@@ -1,8 +1,4 @@
 function(input, output, session) {
-  ESTIMATES_DATA <- utilities::data_estimates()
-  TRENDS_DATA <- utilities::data_trends()
-  AGEGROUPS_DATA <- utilities::data_agegroups()
-
   # (to use these headings press COMMAND+SHIFT+O)
   # estimates server ----
   # __calculate data ----
@@ -117,7 +113,6 @@ function(input, output, session) {
 
   # __generate plot ----
   estimatesPlot <- reactive({
-    color <- if (length(input[[estimates$IDs$controls$colorblind]])) "colorblind" else "standard"
 
     data <- spread(estimatesData(), type, value)
 
@@ -132,7 +127,7 @@ function(input, output, session) {
           ymin = bottom_bound,
           ymax = top_bound
         ),
-        fill = "#EEEEEE"
+        fill = "#EFEFEF"
       ) +
       geom_pointrange(
         mapping = aes(
@@ -147,28 +142,13 @@ function(input, output, session) {
       estimatesLabels() +
       scale_color_manual(
         name = "Scenario",
-        values = viridis(length(
-          c("base_case", estimates$interventions$labels, estimates$analyses$labels)
-        )),
-        labels = c(
-          "base_case" = "Base case",
-          estimates$interventions$labels,
-          estimates$analyses$formatted
-        )
+        values = plots$colors,
+        labels = plots$labels
       ) +
       scale_shape_manual(
         name = "Scenario",
-        values = stats::setNames(
-          seq_along(
-            c("base_case", estimates$interventions$labels, estimates$analyses$formatted)
-          ),
-          c("base_case", estimates$interventions$labels, estimates$analyses$formatted)
-        ),
-        labels = c(
-          "base_case" = "Base case",
-          estimates$interventions$labels,
-          estimates$analyses$formatted
-        )
+        values = plots$shapes,
+        labels = plots$labels
       ) +
       scale_x_continuous(
         name = "Year",
@@ -185,8 +165,9 @@ function(input, output, session) {
         subtitle = estimates$comparators$formatted[[input[[estimates$IDs$controls$comparators]]]]
       ) +
       guides(
-        color = guide_legend(nrow = min(n_distinct(data$scenario), 2)),
-        shape = guide_legend(nrow = min(n_distinct(data$scenario), 2)),
+        color = guide_legend(ncol = 4),
+        # color = guide_legend(nrow = min(n_distinct(data$scenario), 2)),
+        # shape = guide_legend(nrow = min(n_distinct(data$scenario), 2)),
         fill = FALSE
       ) +
       theme_bw() +
@@ -297,7 +278,6 @@ function(input, output, session) {
 
   # __generate plot ----
   trendsPlot <- reactive({
-    color <- if (length(input[[trends$IDs$controls$colorblind]])) "colorblind" else "standard"
 
     data <- spread(trendsData(), type, value)
 
@@ -306,8 +286,6 @@ function(input, output, session) {
       title = "Scenario",
       nrow = min(n_distinct(data$scenario), 2)
     )
-
-    browser()
 
     ggplot(data) +
       geom_ribbon(
@@ -330,51 +308,19 @@ function(input, output, session) {
         linejoin = "round"
       ) +
       scale_fill_manual(
-        values = setNames(
-          plots$color[[color]],
-          c(
-            "base_case",
-            names(trends$interventions$labels),
-            names(trends$analyses$labels)
-          )
-        )
-        # labels = c(
-        #   "base_case" = "Base case",
-        #   trends$interventions$labels,
-        #   trends$analyses$formatted
-        # )
+        name = "Scenario",
+        values = plots$colors,
+        labels = plots$labels
       ) +
       scale_color_manual(
-        values = setNames(
-          plots$color[[color]],
-          c(
-            "base_case",
-            names(trends$interventions$labels),
-            names(trends$analyses$labels)
-          )
-        )
-        # labels = c(
-        #   "base_case" = "Base case",
-        #   trends$interventions$labels,
-        #   trends$analyses$formatted
-        # )
+        name = "Scenario",
+        values = plots$colors,
+        labels = plots$labels
       ) +
       scale_linetype_manual(
-        values = setNames(
-          seq_along(
-            c("base_case", trends$interventions$labels, trends$analyses$formatted)
-          ),
-          c(
-            "base_case",
-            names(trends$interventions$labels),
-            names(trends$analyses$labels)
-          )
-        )
-        # labels = c(
-        #   "base_case" = "Base case",
-        #   trends$interventions$labels,
-        #   trends$analyses$formatted
-        # )
+        name = "Scenario",
+        values = plots$linetypes,
+        labels = plots$labels
       ) +
       scale_x_continuous(
         name = "Year",
@@ -388,9 +334,9 @@ function(input, output, session) {
         subtitle = trends$comparators$formatted[[input[[trends$IDs$controls$comparators]]]]
       ) +
       guides(
-        color = guide,
-        fill = guide,
-        linetype = guide
+        color = guide
+        # fill = guide,
+        # linetype = guide
       ) +
       theme_bw() +
       theme(
@@ -488,10 +434,6 @@ function(input, output, session) {
 
   # __generate plot ----
   agegroupsPlot <- reactive({
-    color <- if (length(input[[agegroups$IDs$controls$colorblind]])) "colorblind" else "standard"
-    # outputName <- session$ns("plot")
-    # session$clientData[[paste0("output_", outputName, "_width")]]
-    # session$clientData[[paste0("output_", outputName , "_height")]]
 
     data <- spread(agegroupsData(), type, value)
 
@@ -500,19 +442,21 @@ function(input, output, session) {
     dodge <- position_dodge(0.85)
 
     ggplot(data, aes(x = age_group)) +
-      geom_bar(
+      # geom_bar(
+      #   mapping = aes(
+      #     y = mean,
+      #     fill = scenario
+      #   ),
+      #   stat = "identity",
+      #   position = dodge
+      # ) +
+      geom_pointrange(
         mapping = aes(
           y = mean,
-          fill = scenario
-        ),
-        stat = "identity",
-        position = dodge
-      ) +
-      geom_linerange(
-        mapping = aes(
           ymin = data$ci_low,
           ymax = data$ci_high,
-          color = scenario
+          color = scenario,
+          shape = scenario
         ),
         position = dodge
       ) +
@@ -525,21 +469,18 @@ function(input, output, session) {
       ) +
       scale_fill_manual(
         name = "Scenario",
-        values = plots$color[[color]],
-        labels = c(
-          "base_case" = "Base case",
-          agegroups$interventions$labels,
-          agegroups$analyses$formatted
-        )
+        values = plots$colors,
+        labels = plots$labels
       ) +
       scale_color_manual(
         name = "Scenario",
-        values = darken(plots$color[[color]], 1.75),
-        labels = c(
-          "base_case" = "Base case",
-          agegroups$interventions$labels,
-          agegroups$analyses$formatted
-        )
+        values = darken(plots$colors, 1.75),
+        labels = plots$labels
+      ) +
+      scale_shape_manual(
+        name = "Scenario",
+        values = plots$shapes,
+        labels = plots$labels
       ) +
       labs(
         title = title

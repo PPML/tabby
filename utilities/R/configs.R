@@ -8,16 +8,24 @@ NULL
 
 #' @rdname configs
 #' @export
-plots <- yaml::read_yaml(system.file("configs", "config-plots.yaml", package = "utilities", mustWork = TRUE))
+config_plots <- function() {
+  yaml::read_yaml(system.file("configs", "config-plots.yaml", package = "utilities", mustWork = TRUE))
+}
 
 #' @rdname configs
 #' @export
-estimates <- yaml::read_yaml(system.file("configs", "config-estimates.yaml", package = "utilities", mustWork = TRUE))
+config_estimates <- function() {
+  yaml::read_yaml(system.file("configs", "config-estimates.yaml", package = "utilities", mustWork = TRUE))
+}
 
 #' @rdname configs
 #' @export
-trends <- yaml::read_yaml(system.file("configs", "config-trends.yaml", package = "utilities", mustWork = TRUE))
+config_trends <- function() {
+  yaml::read_yaml(system.file("configs", "config-trends.yaml", package = "utilities", mustWork = TRUE))
+}
 
 #' @rdname configs
 #' @export
-agegroups <- yaml::read_yaml(system.file("configs", "config-agegroups.yaml", package = "utilities", mustWork = TRUE))
+config_agegroups <- function() {
+  yaml::read_yaml(system.file("configs", "config-agegroups.yaml", package = "utilities", mustWork = TRUE))
+}
