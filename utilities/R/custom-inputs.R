@@ -17,20 +17,28 @@ radioButtons2 <- function(id, heading, labels, values, selected, ...,
     tags$div(
       class = "shiny-options-group",
       Map(
-        function(lab, val, sel, desc) {
+        label = labels,
+        value = values,
+        this = paste0(id, "-", seq_along(labels)),
+        select = selected,
+        desc = descriptions,
+        d_id = paste0(id, "Outcome-", seq_along(descriptions)),
+        function(label, value, this, select, desc, d_id) {
           tags$div(
             class = "radio",
             role = "radio",
             `aria-checked` = FALSE,
             tags$label(
+              `for` = this,
               tags$input(
                 type = "radio",
                 name = id,
-                value = val,
-                checked = if (sel) NA
+                id = this,
+                value = value,
+                checked = if (select) NA
               ),
               tags$span(
-                lab
+                label
               )
             ),
             if (desc != "") {
@@ -39,9 +47,9 @@ radioButtons2 <- function(id, heading, labels, values, selected, ...,
                 `data-toggle` = "tooltip",
                 `data-placement` = "top",
                 title = desc,
-                `aria-describedby` = "#outcomeDescription",
+                `aria-describedby` = paste0("#", d_id),
                 tags$span(
-                  id = "outcomeDescription",
+                  id = d_id,
                   class = "sr-only",
                   `aria-hidden` = TRUE,
                   desc
@@ -49,11 +57,7 @@ radioButtons2 <- function(id, heading, labels, values, selected, ...,
               )
             }
           )
-        },
-        labels,
-        values,
-        selected,
-        descriptions
+        }
       )
     )
   )
@@ -75,16 +79,23 @@ checkboxGroup2 <- function(id, heading, labels, values, descriptions = NULL) {
     tags$div(
       class = "shiny-options-group",
       Map(
-        function(lab, val, desc) {
+        label = labels,
+        value = values,
+        this = paste0(id, "-", seq_along(labels)),
+        desc = descriptions,
+        d_id = paste0(id, "Description-", seq_along(descriptions)),
+        function(label, value, this, desc, d_id) {
           tags$div(
             class = "checkbox",
             role = "checkbox",
             tags$label(
+              `for` = this,
               tags$input(
                 type = "checkbox",
                 name = id,
-                value = val,
-                tags$span(lab)
+                id = this,
+                value = value,
+                tags$span(label)
               )
             ),
             if (desc != "") {
@@ -93,9 +104,9 @@ checkboxGroup2 <- function(id, heading, labels, values, descriptions = NULL) {
                 `data-toggle` = "tooltip",
                 `data-placement` = "top",
                 title = desc,
-                `aria-describedby` = "#outcomeDescription",
+                `aria-describedby` = paste0("#", d_id),
                 tags$span(
-                  id = "outcomeDescription",
+                  id = d_id,
                   class = "sr-only",
                   `aria-hidden` = TRUE,
                   desc
@@ -103,46 +114,55 @@ checkboxGroup2 <- function(id, heading, labels, values, descriptions = NULL) {
               )
             }
           )
-        },
-        labels,
-        values,
-        descriptions
+        }
       )
     )
   )
 }
 
-downloadButtonBar <- function(ids, heading, labels, aria = NULL) {
+downloadButtonBar <- function(ids, heading, labels) {
+  descriptions <- paste(
+    "This link acts like a button. Click this link to download",
+    c(
+      "the visualization as a PNG file.",
+      "the visualization as a PDF file.",
+      "the visualization as a Power Point file.",
+      "the data used in the visualization as CSV file.",
+      "the data used in the visualization as an Excel file."
+    )
+  )
+
   tags$div(
     tags$label(
       class = "control-label",
       heading
     ),
     tags$div(
-      do.call(
-        tagAppendAttributes,
-        c(
-          list(
-            tag = tags$div(
-              class = "btn-group",
-              role = "group",
-              Map(
-                function(id, label) {
-                  tags$a(
-                    id = id,
-                    class = "btn btn-default shiny-download-link",
-                    href = "",
-                    target = "_blank",
-                    download = NA,
-                    label
-                  )
-                },
-                ids,
-                labels
+      tags$div(
+        class = "btn-group",
+        role = "group",
+        Map(
+          id = ids,
+          label = labels,
+          desc = descriptions,
+          d_id = paste0(ids, "Description"),
+          function(id, label, desc, d_id) {
+            tags$a(
+              id = id,
+              class = "btn btn-default shiny-download-link",
+              href = "",
+              target = "_blank",
+              download = NA,
+              `aria-describedby` = d_id,
+              label,
+              tags$span(
+                class = "sr-only",
+                id = d_id,
+                `aria-hidden` = TRUE,
+                desc
               )
             )
-          ),
-          aria
+          }
         )
       )
     )
