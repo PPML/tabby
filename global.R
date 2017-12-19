@@ -17,16 +17,16 @@ library(yaml)
 
 devtools::load_all("utilities")
 
-ESTIMATES_DATA <- utilities::data_estimates()
-TRENDS_DATA <- utilities::data_trends()
-AGEGROUPS_DATA <- utilities::data_agegroups()
+ESTIMATES_DATA <- data_estimates()
+TRENDS_DATA <- data_trends()
+AGEGROUPS_DATA <- data_agegroups()
 
-plots <- utilities::config_plots()
+plots <- config_plots()
 # bit of a hacky work around
 for (i in c("colors", "shapes", "linetypes", "labels")) {
   plots[[i]] <- unlist(plots[[i]])
 }
 
-estimates <- utilities::config_estimates()
-trends <- utilities::config_trends()
-agegroups <- utilities::config_agegroups()
+estimates <- config_estimates()
+trends <- config_trends()
+agegroups <- config_agegroups()

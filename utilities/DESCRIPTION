@@ -3,7 +3,8 @@ Title: Tabby App Utilities
 Version: 0.0.0.1
 Authors@R: person("Nathan", "Teetor", email = "nteetor@hsph.harvard.edu", role = c("aut", "cre"))
 Description: Provide utilities for the Tabby TB application. These utilities
-    include UI building functions and more generic util functions.
+    include UI building functions, data loading, config reading, and general
+    util functions.
 Depends: R (>= 3.4.0)
 License: What license is it under?
 Encoding: UTF-8
@@ -17,7 +18,6 @@ Imports:
     ggplot2,
     ggrepel,
     scales,
-    wesanderson,
     naturalsort,
     extrafont,
     openxlsx,

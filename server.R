@@ -127,7 +127,7 @@ function(input, output, session) {
           ymin = bottom_bound,
           ymax = top_bound
         ),
-        fill = "#EFEFEF"
+        fill = "#F5F5F5"
       ) +
       geom_pointrange(
         mapping = aes(

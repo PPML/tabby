@@ -74,16 +74,16 @@ fluidPage(
     column(
       width = 4,
       class = "tab-content",
-      utilities::estimatesControlPanel(),
-      utilities::trendsControlPanel(),
-      utilities::agegroupsControlPanel()
+      estimatesControlPanel(),
+      trendsControlPanel(),
+      agegroupsControlPanel()
     ),
     column(
       width = 8,
       class = "tab-content",
-      utilities::estimatesVisualizationPanel(),
-      utilities::trendsVisualizationPanel(),
-      utilities::agegroupsVisualizationPanel()
+      estimatesVisualizationPanel(),
+      trendsVisualizationPanel(),
+      agegroupsVisualizationPanel()
     )
   )
 )

@@ -8,7 +8,8 @@
 \title{utilities: Tabby App Utilities}
 \description{
 Provide utilities for the Tabby TB application. These utilities
-include UI building functions and more generic util functions.
+include UI building functions, data loading, config reading, and general
+util functions.
 }
 \author{
 \strong{Maintainer}: Nathan Teetor \email{nteetor@hsph.harvard.edu}
