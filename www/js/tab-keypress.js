@@ -4,9 +4,16 @@ $(function () {
 
 $(document).ready(function() {
   $(".navbar").on("keypress", "a", function(e) {
-  //  console.log("keypress");
-    if (e.keyCode == 32 || e.keyCode == 13) {
+    if (e.keyCode == 13) {
       $(this).tab("show");
+    }
+  });
+  $("input[type='checkbox']").on("change", function(e) {
+    var $this = $(this);
+    if ($this.is(":checked")) {
+      $this.attr("aria-checked", "true");
+    } else {
+      $this.attr("aria-checked", "false");
     }
   });
 });

@@ -17,14 +17,15 @@ fluidPage(
       tags$div(
         class = "container-fluid",
         tags$ul(
-          id = "tab",
           class = "nav navbar-nav navbar-left",
           tags$li(
+            role = "presentation",
             class = "active",
             tags$a(
               `data-toggle` = "tab",
               `data-value` = "estimates",
               `data-target` = ".estimates-tab",
+              role = "tab",
               tabindex = 0,
               tags$span(
                 tagAppendAttributes(
@@ -36,10 +37,12 @@ fluidPage(
             )
           ),
           tags$li(
+            role = "presentation",
             tags$a(
               `data-toggle` = "tab",
               `data-value` = "trends",
               `data-target` = ".trends-tab",
+              role = "tab",
               tabindex = 0,
               tags$span(
                 tagAppendAttributes(
@@ -51,10 +54,12 @@ fluidPage(
             )
           ),
           tags$li(
+            role = "presentation",
             tags$a(
               `data-toggle` = "tab",
               `data-value` = "ages",
               `data-target` = ".agegroups-tab",
+              role = "tab",
               tabindex = 0,
               tags$span(
                 tagAppendAttributes(

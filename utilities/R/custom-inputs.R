@@ -47,6 +47,7 @@ radioButtons2 <- function(id, heading, labels, values, selected, ...,
                 `data-toggle` = "tooltip",
                 `data-placement` = "top",
                 title = desc,
+                tabindex = 0,
                 `aria-describedby` = paste0("#", d_id),
                 tags$span(
                   id = d_id,
@@ -92,6 +93,7 @@ checkboxGroup2 <- function(id, heading, labels, values, descriptions = NULL) {
               `for` = this,
               tags$input(
                 type = "checkbox",
+                `aria-checked` = "false",
                 name = id,
                 id = this,
                 value = value,
@@ -104,6 +106,7 @@ checkboxGroup2 <- function(id, heading, labels, values, descriptions = NULL) {
                 `data-toggle` = "tooltip",
                 `data-placement` = "top",
                 title = desc,
+                tabindex = 0,
                 `aria-describedby` = paste0("#", d_id),
                 tags$span(
                   id = d_id,
@@ -154,6 +157,7 @@ downloadButtonBar <- function(ids, heading, labels) {
               target = "_blank",
               download = NA,
               `aria-describedby` = d_id,
+              tabindex = 0,
               label,
               tags$span(
                 class = "sr-only",
