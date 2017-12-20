@@ -4,61 +4,64 @@ radioButtons2 <- function(id, heading, labels, values, selected, ...,
     descriptions <- rep.int("", length(labels))
   }
 
-  tags$div(
-    id = id,
-    class = "shiny-input-radiogroup shiny-input-container",
-    role = "radiogroup",
-    `aria-labelledby` = id,
+  tags$section(
+    `aria-label` = heading,
     tags$label(
       class = "control-label",
       `for` = id,
       heading
     ),
     tags$div(
-      class = "shiny-options-group",
-      Map(
-        label = labels,
-        value = values,
-        this = paste0(id, "-", seq_along(labels)),
-        select = selected,
-        desc = descriptions,
-        d_id = paste0(id, "Outcome-", seq_along(descriptions)),
-        function(label, value, this, select, desc, d_id) {
-          tags$div(
-            class = "radio",
-            role = "radio",
-            `aria-checked` = FALSE,
-            tags$label(
-              `for` = this,
-              tags$input(
-                type = "radio",
-                name = id,
-                id = this,
-                value = value,
-                checked = if (select) NA
-              ),
-              tags$span(
-                label
-              )
-            ),
-            if (desc != "") {
-              tags$span(
-                class = "fa fa-question-circle-o",
-                `data-toggle` = "tooltip",
-                `data-placement` = "top",
-                title = desc,
-                tabindex = 0,
-                `aria-describedby` = paste0("#", d_id),
+      id = id,
+      class = "shiny-input-radiogroup shiny-input-container",
+      role = "radiogroup",
+      `aria-labelledby` = id,
+      tags$div(
+        class = "shiny-options-group",
+        Map(
+          label = labels,
+          value = values,
+          this = paste0(id, "-", seq_along(labels)),
+          select = selected,
+          desc = descriptions,
+          d_id = paste0(id, "Outcome-", seq_along(descriptions)),
+          function(label, value, this, select, desc, d_id) {
+            tags$div(
+              class = "radio",
+              role = "radio",
+              `aria-checked` = FALSE,
+              tags$label(
+                `for` = this,
+                tags$input(
+                  type = "radio",
+                  name = id,
+                  id = this,
+                  value = value,
+                  checked = if (select) NA
+                ),
                 tags$span(
-                  id = d_id,
-                  class = "sr-only",
-                  `aria-hidden` = TRUE,
-                  desc
+                  label
                 )
-              )
-            }
-          )
-        }
+              ),
+              if (desc != "") {
+                tags$span(
+                  class = "fa fa-question-circle-o",
+                  `data-toggle` = "tooltip",
+                  `data-placement` = "top",
+                  title = desc,
+                  tabindex = 0,
+                  `aria-describedby` = d_id,
+                  tags$span(
+                    id = d_id,
+                    class = "sr-only",
+                    `aria-hidden` = TRUE,
+                    desc
+                  )
+                )
+              }
+            )
+          }
+        )
       )
     )
   )
@@ -107,7 +110,7 @@ checkboxGroup2 <- function(id, heading, labels, values, descriptions = NULL) {
                 `data-placement` = "top",
                 title = desc,
                 tabindex = 0,
-                `aria-describedby` = paste0("#", d_id),
+                `aria-describedby` = d_id,
                 tags$span(
                   id = d_id,
                   class = "sr-only",
@@ -125,7 +128,7 @@ checkboxGroup2 <- function(id, heading, labels, values, descriptions = NULL) {
 
 downloadButtonBar <- function(ids, heading, labels) {
   descriptions <- paste(
-    "This link acts like a button. Click this link to download",
+    "This link acts like a button. Click this link or press the enter key to download",
     c(
       "the visualization as a PNG file.",
       "the visualization as a PDF file.",

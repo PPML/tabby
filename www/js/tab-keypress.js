@@ -8,7 +8,7 @@ $(document).ready(function() {
       $(this).tab("show");
     }
   });
-  $("input[type='checkbox']").on("change", function(e) {
+  $("input[type='checkbo']").on("change", function(e) {
     var $this = $(this);
     if ($this.is(":checked")) {
       $this.attr("aria-checked", "true");
