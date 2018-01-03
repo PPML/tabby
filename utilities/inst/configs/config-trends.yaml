@@ -52,9 +52,9 @@ populations:
   - no
   - no
   formatted:
-    absolute_value: total US population
-    pct_basecase_same_year: US-born population
-    pct_basecase_2016: foreign-born US population
+    all_populations: total US population
+    usb_population: US-born population
+    fb_population: foreign-born US population
 ages:
   heading: Age groups
   values:
