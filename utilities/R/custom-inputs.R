@@ -29,7 +29,6 @@ radioButtons2 <- function(id, heading, labels, values, selected, ...,
             tags$div(
               class = "radio",
               role = "radio",
-              `aria-checked` = FALSE,
               tags$label(
                 `for` = this,
                 tags$input(
@@ -37,7 +36,8 @@ radioButtons2 <- function(id, heading, labels, values, selected, ...,
                   name = id,
                   id = this,
                   value = value,
-                  checked = if (select) NA
+                  checked = if (select) NA,
+                  `aria-checked` = if (select) "true" else "false"
                 ),
                 tags$span(
                   label
@@ -91,7 +91,7 @@ checkboxGroup2 <- function(id, heading, labels, values, descriptions = NULL) {
         function(label, value, this, desc, d_id) {
           tags$div(
             class = "checkbox",
-            role = "checkbox",
+            # role = "checkbox",
             tags$label(
               `for` = this,
               tags$input(
