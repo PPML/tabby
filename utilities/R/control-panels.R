@@ -45,24 +45,12 @@ estimatesControlPanel  <- function() {
       values = estimates$analyses$values,
       descriptions = estimates$analyses$descriptions
     ),
-    labels = tags$div(
-      class = "form-group shiny-input-container",
-      tags$label(class="control-label", `for` = "estimatesLabels", "Labels"),
-      tags$div(
-        tags$select(
-          id = "estimatesLabels",
-          tags$option(value="none", selected = NA, "None"),
-          tags$option(value="means", "Mean values"),
-          tags$option(value="intervals", "Confidence intervals"),
-          tags$option(value="all", "All")
-        )
-      )
+    labels = selectInput(
+      inputId = estimates$IDs$controls$labels,
+      label = estimates$labels$heading,
+      choices = estimates$labels$labels,
+      selectize = FALSE
     ),
-    #selectInput(
-    #   inputId = estimates$IDs$controls$labels,
-    #   label = estimates$labels$heading,
-    #   choices = estimates$labels$labels
-    # ),
     downloads = downloadButtonBar(
       ids = estimates$IDs$downloads,
       heading = estimates$downloads$heading,
