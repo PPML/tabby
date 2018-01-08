@@ -9,7 +9,12 @@ radioButtons2 <- function(id, heading, labels, values, selected, ...,
     tags$label(
       class = "control-label",
       `for` = id,
-      heading
+      tabindex=0,
+      heading,
+      tags$span(
+        class = "sr-only",
+        paste0("Select the ", heading, " by using the up and down arrow keys to navigate the form below")
+      )
     ),
     tags$div(
       id = id,
@@ -78,7 +83,11 @@ checkboxGroup2 <- function(id, heading, labels, values, descriptions = NULL) {
     tags$label(
       class = "control-label",
       `for` = id,
-      heading
+      heading,
+      tags$span(
+        class="sr-only",
+        paste0("Select the ", heading, " by tabbing through the checkboxes below and use Enter to make your selection.")
+      )
     ),
     tags$div(
       class = "shiny-options-group",
