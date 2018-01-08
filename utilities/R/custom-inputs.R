@@ -9,7 +9,7 @@ radioButtons2 <- function(id, heading, labels, values, selected, ...,
     tags$label(
       class = "control-label",
       `for` = id,
-      tabindex=0,
+      tabindex = 0,
       heading,
       tags$span(
         class = "sr-only",
@@ -83,6 +83,7 @@ checkboxGroup2 <- function(id, heading, labels, values, descriptions = NULL) {
     tags$label(
       class = "control-label",
       `for` = id,
+      tabindex = 0,
       heading,
       tags$span(
         class="sr-only",
