@@ -10,18 +10,29 @@ $(document).ready(function() {
   });
   $("input[type='checkbox']").on("change", function(e) {
     var $this = $(this);
-    if ($this.is(":checked")) {
-      $this.attr("aria-checked", "true");
-    } else {
-      $this.attr("aria-checked", "false");
-    }
+    $this.closest("div[role='checkboxgroup']")
+      .find("div[role='checkbox']")
+      .map(function(i, e) {
+        var $btn = $(e).find("input[type='checkbox']");
+        var $label = $(e).find("label");
+        var $val = $btn.is(":checked");
+        $label.attr("aria-checked", $val);
+        $btn.attr("aria-checked", $val);
+        $(e).attr("aria-checked", $val);
+      });
   });
   $("input[type='radio']").on("change", function(e) {
     var $this = $(this);
     $this.closest("div[role='radiogroup']")
-      .find("input[type='radio']")
+      .find("div[role='radio']")
       .map(function(i, e) {
-        $(e).attr("aria-checked", $(e).is(":checked"));
+        var $btn = $(e).find("input[type='radio']");
+        var $label = $(e).find("label");
+        var $val = $btn.is(":checked");
+        $label.attr("aria-checked", $val);
+        $btn.attr("aria-checked", $val);
+        $(e).attr("aria-checked", $val);
       });
   });
+
 });

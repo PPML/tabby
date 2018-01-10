@@ -34,8 +34,10 @@ radioButtons2 <- function(id, heading, labels, values, selected, ...,
             tags$div(
               class = "radio",
               role = "radio",
+              `aria-checked` = if (select) "true" else "false",
               tags$label(
                 `for` = this,
+                `aria-checked` = if (select) "true" else "false",
                 tags$input(
                   type = "radio",
                   name = id,
@@ -53,13 +55,11 @@ radioButtons2 <- function(id, heading, labels, values, selected, ...,
                   class = "fa fa-question-circle-o",
                   `data-toggle` = "tooltip",
                   `data-placement` = "top",
-                  title = desc,
                   tabindex = 0,
                   `aria-describedby` = d_id,
                   tags$span(
                     id = d_id,
                     class = "sr-only",
-                    `aria-hidden` = TRUE,
                     desc
                   )
                 )
@@ -101,7 +101,7 @@ checkboxGroup2 <- function(id, heading, labels, values, descriptions = NULL) {
         function(label, value, this, desc, d_id) {
           tags$div(
             class = "checkbox",
-            # role = "checkbox",
+            role = "checkboxgroup",
             tags$label(
               `for` = this,
               tags$input(
@@ -118,13 +118,11 @@ checkboxGroup2 <- function(id, heading, labels, values, descriptions = NULL) {
                 class = "fa fa-question-circle-o",
                 `data-toggle` = "tooltip",
                 `data-placement` = "top",
-                title = desc,
                 tabindex = 0,
                 `aria-describedby` = d_id,
                 tags$span(
                   id = d_id,
                   class = "sr-only",
-                  `aria-hidden` = TRUE,
                   desc
                 )
               )
