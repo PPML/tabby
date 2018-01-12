@@ -25,7 +25,7 @@ fluidPage(
               `data-toggle` = "tab",
               `data-value` = "estimates",
               `data-target` = ".estimates-tab",
-              role = "button",
+              role = "tab",
               tabindex = 0,
               tags$span(
                 tagAppendAttributes(
@@ -42,7 +42,7 @@ fluidPage(
               `data-toggle` = "tab",
               `data-value` = "trends",
               `data-target` = ".trends-tab",
-              role = "button",
+              role = "tab",
               tabindex = 0,
               tags$span(
                 tagAppendAttributes(
@@ -59,7 +59,7 @@ fluidPage(
               `data-toggle` = "tab",
               `data-value` = "ages",
               `data-target` = ".agegroups-tab",
-              role = "button",
+              role = "tab",
               tabindex = 0,
               tags$span(
                 tagAppendAttributes(

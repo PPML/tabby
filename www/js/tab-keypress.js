@@ -4,7 +4,7 @@ $(function () {
 
 $(document).ready(function() {
   $(".navbar").on("keypress", "a", function(e) {
-    if (e.keyCode == 13) {
+    if (e.keyCode == 13 || e.keyCode == 32) {
       $(this).tab("show");
     }
   });
