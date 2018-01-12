@@ -4,8 +4,9 @@ $(function () {
 
 $(document).ready(function() {
   $(".navbar").on("keypress", "a", function(e) {
-    if (e.keyCode == 13 || e.keyCode == 32) {
+    if (e.keyCode == 13 || e.keyCode == 32 || e.keyCode == 0) {
       $(this).tab("show");
+      e.preventDefault();
     }
   });
   $("input[type='checkbox']").on("change", function(e) {

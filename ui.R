@@ -1,6 +1,7 @@
 fluidPage(
   includeScript("www/js/update-alt-text.js"),
   includeScript("www/js/tab-keypress.js"),
+  includeScript("www/js/add-select-instructions.js"),
   tags$head(
     tags$style(
       type = "text/css",
