@@ -55,6 +55,7 @@ radioButtons2 <- function(id, heading, labels, values, selected, ...,
                   class = "fa fa-question-circle-o",
                   `data-toggle` = "tooltip",
                   `data-placement` = "top",
+                  title = desc,
                   tabindex = 0,
                   `aria-describedby` = d_id,
                   tags$span(
@@ -118,6 +119,7 @@ checkboxGroup2 <- function(id, heading, labels, values, descriptions = NULL) {
                 class = "fa fa-question-circle-o",
                 `data-toggle` = "tooltip",
                 `data-placement` = "top",
+                title = desc,
                 tabindex = 0,
                 `aria-describedby` = d_id,
                 tags$span(
