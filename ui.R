@@ -24,6 +24,23 @@ fluidPage(
             class = "active",
             tags$a(
               `data-toggle` = "tab",
+              `data-value` = "about",
+              `data-target` = ".about-tab",
+              role = "tab",
+              tabindex = 0,
+              tags$span(
+                tagAppendAttributes(
+                  icon("info-circle"),
+                  `aria-hidden` = TRUE
+                ),
+                "About Tabby"
+              )
+            )
+          ),
+          tags$li(
+            role = "presentation",
+            tags$a(
+              `data-toggle` = "tab",
               `data-value` = "estimates",
               `data-target` = ".estimates-tab",
               role = "tab",
@@ -78,8 +95,17 @@ fluidPage(
   fluidRow(
     class = "main-content",
     column(
+      width = 12,
+      class="tab-content",
+      descriptionVisualizationPanel(),
+      emptyEstimatesPanel(),
+      emptyTrendsPanel(),
+      emptyAgeGroupsPanel()
+    ),
+    column(
       width = 4,
       class = "tab-content",
+      emptyDescriptionPanel(),
       estimatesControlPanel(),
       trendsControlPanel(),
       agegroupsControlPanel()
@@ -87,6 +113,7 @@ fluidPage(
     column(
       width = 8,
       class = "tab-content",
+      emptyDescriptionPanel(),
       estimatesVisualizationPanel(),
       trendsVisualizationPanel(),
       agegroupsVisualizationPanel()

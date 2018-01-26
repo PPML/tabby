@@ -13,7 +13,6 @@ estimatesVisualizationPanel <- function() {
       ),
       click = clickOpts(estimates$IDs$click),
       dblclick = dblclickOpts(estimates$IDs$dblclick),
-      active = TRUE
     ),
     class = "estimates-tab"
   )

@@ -1,7 +1,6 @@
 estimatesControlPanel  <- function() {
   controlPanel(
     class = "estimates-tab",
-    active = TRUE,
     comparators = radioButtons2(
       id = estimates$IDs$controls$comparators,
       heading = estimates$comparators$heading,
