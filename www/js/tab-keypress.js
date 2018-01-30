@@ -4,7 +4,7 @@ $(function () {
 
 $(document).ready(function() {
   $(".navbar").on("keypress", "a", function(e) {
-    if (e.keyCode == 13 || e.keyCode == 32 || e.keyCode == 0) {
+    if (e.keyCode == 13 || e.keyCode == 32 || e.keyCode === 0) {
       $(this).tab("show");
       e.preventDefault();
     }
@@ -34,6 +34,20 @@ $(document).ready(function() {
         $btn.attr("aria-checked", $val);
         $(e).attr("aria-checked", $val);
       });
+  });
+  $("div[role='radio']").on('keypress', function(e) {
+    if (e.keyCode == 13 || e.keyCode == 32 || e.keyCode === 0) {
+      var $this = $(this);
+      $this.find('input').click();
+      e.preventDefault();
+    }
+  });
+  $("div[role='checkboxgroup']").on('keypress', function(e) {
+    if (e.keyCode == 13 || e.keyCode == 32 || e.keyCode === 0) {
+      var $this = $(this);
+      $this.find('input').click();
+      e.preventDefault();
+    }
   });
 
 });
