@@ -13,7 +13,7 @@ radioButtons2 <- function(id, heading, labels, values, selected, ...,
       heading,
       tags$span(
         class = "sr-only",
-        paste0("Select the ", heading, " by using the up and down arrow keys to navigate the form below")
+        paste0("Select the ", heading, " by tabbing through the inputs below and using enter to make your selection.")
       )
     ),
     tags$div(
@@ -35,6 +35,7 @@ radioButtons2 <- function(id, heading, labels, values, selected, ...,
               class = "radio",
               role = "radio",
               `aria-checked` = if (select) "true" else "false",
+              tabindex='0',
               tags$label(
                 `for` = this,
                 `aria-checked` = if (select) "true" else "false",
@@ -44,27 +45,15 @@ radioButtons2 <- function(id, heading, labels, values, selected, ...,
                   id = this,
                   value = value,
                   checked = if (select) NA,
-                  `aria-checked` = if (select) "true" else "false"
+                  tabindex='-1',
+                  `aria-checked` = if (select) "true" else "false",
+                  `aria-describedby` = paste(this, "label", sep="-")
                 ),
                 tags$span(
+                  class = paste(this, "label", sep="-"),
                   label
                 )
-              ),
-              if (desc != "") {
-                tags$span(
-                  class = "fa fa-question-circle-o",
-                  `data-toggle` = "tooltip",
-                  `data-placement` = "top",
-                  title = desc,
-                  tabindex = 0,
-                  `aria-describedby` = d_id,
-                  tags$span(
-                    id = d_id,
-                    class = "sr-only",
-                    desc
-                  )
-                )
-              }
+              )
             )
           }
         )
@@ -88,7 +77,7 @@ checkboxGroup2 <- function(id, heading, labels, values, descriptions = NULL) {
       heading,
       tags$span(
         class="sr-only",
-        paste0("Select the ", heading, " by tabbing through the checkboxes below and use Enter to make your selection.")
+        paste0("Select the ", heading, " by tabbing through the checkboxes below and use enter to make your selection.")
       )
     ),
     tags$div(
@@ -103,32 +92,19 @@ checkboxGroup2 <- function(id, heading, labels, values, descriptions = NULL) {
           tags$div(
             class = "checkbox",
             role = "checkboxgroup",
+            tabindex='0',
             tags$label(
               `for` = this,
               tags$input(
                 type = "checkbox",
+                tabindex='-1',
                 `aria-checked` = "false",
                 name = id,
                 id = this,
                 value = value,
                 tags$span(label)
               )
-            ),
-            if (desc != "") {
-              tags$span(
-                class = "fa fa-question-circle-o",
-                `data-toggle` = "tooltip",
-                `data-placement` = "top",
-                title = desc,
-                tabindex = 0,
-                `aria-describedby` = d_id,
-                tags$span(
-                  id = d_id,
-                  class = "sr-only",
-                  desc
-                )
-              )
-            }
+            )
           )
         }
       )
