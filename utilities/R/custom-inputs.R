@@ -101,8 +101,11 @@ checkboxGroup2 <- function(id, heading, labels, values, descriptions = NULL) {
                 `aria-checked` = "false",
                 name = id,
                 id = this,
+                `aria-describedby` = paste(this, "label", sep="-"),
                 value = value,
-                tags$span(label)
+                tags$span(
+                  class = paste(this, "label", sep="-"),
+                  label)
               )
             )
           )
