@@ -31,109 +31,72 @@ descriptionPanel <- function() {
 
     tags$br(),
 
-    p("Tabby is an application developed to visualize simulated outcomes of various
-      intervention scenarios in a model of tuberculosis in the United States.
-      Tabby allows these interventions to be contrasted in their outcomes,
-      showing how different intervention strategies yield improved outcomes
-      in different ways."),
+    p("Tabby is a web application providing predictions of future TB epidemiology in the United States under a range of different assumptions and policy scenarios. Users can select a health outcome and subpopulation of interest, then select one or multiple scenarios to compare. Results are displayed graphically, and following inputs from the user the graphs update automatically to reflect the new selections. Visualizations can be downloaded in various formats, and the estimates underlying the graphs can also be downloaded in tabular format."),
 
-    p("The model divides its population into compartments by age groups and nativity.
-      Outcomes include incidence and prevalence rates broken down into rates
-      describing active, latent, and, multi-drug-resistant tuberculosis."),
+    p("The estimates shown by Tabby are based on a transmission-dynamic model of TB epidemiology in the US, incorporating TB transmission and natural history; TB drug resistance patterns; prior and future TB prevention and control; the impact of HIV on TB; heterogeneity in TB risks among US-born and foreign-born populations; and age-based differences in disease mechanisms and risk factor prevalence. Detailed methods (analytic methods, scenario and outcome definitions) and main results for this analysis are described in detail in \"Prospects for tuberculosis elimination in the United States: results of a transmission dynamic model\" [citation info to be added]."),
 
-    p(
-      "Tabby has three pages: Estimates, Time Trends, and Age Groups. The estimates
-      page visualizes outcomes in 2016, 2025, 2050, 2075, and 2100 by a
-      choice of comparator which adjusts the plot such that estimates of intervention
-      outcomes are shown directly, as a percentages of the estimated values in the
-      base-case, or as percentages of the base case intervention in 2016.
-      The time trends page depicts the same intervention outcomes as displayed on the
-      Estimates tab, but in a continuous plot depicting values for every year after
-      2016 in the 21st century. The age groups page visualizes outcomes for 11 age
-      groups in a specific year chosen by the user."),
+    h3("Organization"),
 
-    p(
-      "The following are descriptions of several of the options available for
-      visualization in Tabby."
-    ),
+    p("Tabby has three pages with interactive visualizations: ", tags$em("Estimates, Time Trends,"), " and ", tags$em("Age Groups."), "Each page can be accessed from the menu bar at the top of the page."),
 
-    h3("Descriptions of Outcomes"),
-    tags$ul(
+    p("The ", tags$em("Estimates"), " page visualizes predicted TB outcomes at 5 major time points: 2016, 2025, 2050, 2075, and 2100. The ", tags$em("Time Trends"), " page depicts predicted TB outcomes for each individual year from 2016 to 2100. The ", tags$em("Age Groups"), " page visualizes predicted TB outcomes for a specified year subdivided into 11 age groups."),
 
-      tags$li(
-        "New TB infections - TB cases identified each year (includes TB cases identified
-        after death)"
-      ),
-      tags$li(
-        "LTBI Prevalence - Incident M. TB infections each year due to transmission within
-      the US (includes reinfection of individuals with prior infection, excludes
-      immigrants entering the US with established LTBI)"
-      ),
-      tags$li(
-        "MDR-TB in New TB Cases - Incident M. TB infections each year due to transmission
-        within the US (includes reinfection of individuals with prior infection,
-                       excludes immigrants entering the US with established LTBI)"
-      ),
-      tags$li(
-        "Incidence - Incident M. TB infections each year due to transmission within the
-        US (includes reinfection of individuals with prior infection, excludes
-        immigrants entering the US with established LTBI)"
-      ),
-      tags$li(
-        "TB-Related Deaths - Number of deaths attributable to TB each year"
-      )
-    ),
+    h4("Estimates and Time Trends pages"),
 
-    h3("Intervention Scenarios"),
+    p("User options are shown in a column on the left. The user specifies:"),
+
+    p(tags$em("Comparator:"), " results can be shown as absolute values for each outcome in each year, or as a percentage of the base case scenario in the same year, or as a percentage of the base case scenario in 2016."),
+
+    p(tags$em("Subgroup:"), " results can be shown for the total population, or for a subgroup described by nativity (US-born, foreign-born), and broad age groups (0-24 years, 25-64 years, 65+ years)."),
+
+    p(tags$em("Outcome:"), " results can be shown for five different outcomes: 'Incident TB infections' representing the annual number of incident ", tags$em("M. tb"), " infections per million due to transmission within the US (includes reinfection of individuals with prior infection, excludes immigrants entering the US with established LTBI); 'LTBI prevalence' representing the percentage of individuals with latent TB infection in a given year; 'TB incidence' representing the annual number of notified TB cases per million, including TB cases identified after death;  'MDR-TB in incident TB cases' representing the percentage of all incident TB cases with MDR-TB; and 'TB-related deaths' representing annual TB-attributable mortality per million."),
+
+    p(tags$em("Scenarios:"), " results can be shown for up to seven  scenarios selected by the user, describing different assumptions about future TB prevention and control policy ('Intervention Scenarios'), or trends in major epidemiological determinants ('Additional Scenarios'). Descriptions for each scenario are provided below."),
+
+    p(tags$em("Download:"), " clicking on a button initiates download of the visualization itself (.png, .pdf, .pptx) or the estimates underlying the visualization (.csv, .xlsx)."),
+
+    h4("Age groups page"),
+
+    p("This page matches the format of the first two pages with the following exceptions:"),
+
+    p(tags$em("Comparator:"), " results are only shown as absolute values for each outcome in each year."),
+
+    p(tags$em("Subgroup:"), " results can be shown for the total population, or for US-born and foreign-born alone."),
+
+    p(tags$em("Outcomes:"), " results can be shown for three major outcomes (LTBI prevalence, TB incidence, and TB-related deaths), either as a prevalence or incidence rate with each age group (first three selections), or in absolute numbers (last three selections)."),
+
+    p("The following are descriptions of the intervention scenarios and outcomes available for visualization in Tabby. "),
+
+    h3("Scenarios"),
+
+    h4("Intervention scenarios"),
 
     tags$ul(
+      tags$li("'TLTBI for New Immigrants': Provision of LTBI testing and treatment for all new legal immigrants entering the US."),
 
-      tags$li(
-        "TLTBI for New Immigrants - Provision of LTBI testing and treatment for all new
-        legal immigrants entering the US"
-        ),
+      tags$li("'Improved TLTBI in the United States': Intensification of the current LTBI targeted testing and treatment policy for high-risk populations, doubling treatment uptake within each risk group compared to current levels, and increasing the fraction cured among individuals initiating LTBI treatment, via a 3-month Isoniazid-Rifapentine drug regimen."),
 
-      tags$li(
-        "Improved TLTBI in the United States - Intensification of the current LTBI
-        targeted testing and treatment policy for high-risk populations, doubling
-        treatment uptake within each risk group compared to current levels, and
-        increasing the fraction cured among individuals initiating LTBI treatment, via a
-        3-month Isoniazid-Rifapentine drug regimen"
-      ),
+      tags$li("'Better Case Detection': Improved detection of active TB cases, such that the duration of untreated active disease (time from TB incidence to the initiation of treatment) is reduced by 50%."),
 
-      tags$li(
-        "Better Case Detection - Improved detection of active TB cases, such that the
-        duration of untreated active disease (time from TB incidence to the initiation
-        of treatment) is reduced by 50%"
-      ),
+      tags$li("'Better TB Treatment': Improved treatment quality for active TB, such that treatment default, failure rates, and the fraction of individuals receiving an incorrect drug regimen are reduced by 50% from current levels."),
 
-      tags$li(
-        "Better TB Treatment - Improved treatment quality for active TB, such that
-        treatment default, failure rates, and the fraction of individuals receiving an
-        incorrect drug regimen are reduced by 50% from current levels"
-      ),
-
-      tags$li(
-        "All Improvements - The combination of all intervention scenarios described above"
-      )
+      tags$li("'All Improvements': The combination of all intervention scenarios described above.")
     ),
 
-    h3("Additional Scenarios"),
+    h4("Additional Scenarios"),
 
     tags$ul(
+      tags$li("'No Transmission Within the United States after 2016': From 2016 onwards, no individuals acquire M. TB infection from transmission within the United States. In this scenario the only source of new LTBI cases is from existing infection in new migrants entering the country."),
 
-      tags$li(
-        "No Transmission Within the United States after 2016 - From 2016 onwards, no
-        individuals acquire M. TB infection from transmission within the United States.
-        In this scenario the only source of new LTBI cases is from existing infection in
-        new immigrants."
-      ),
+      tags$li("'No LTBI Among Immigrants after 2016': From 2016 onwards, all individuals immigrating to the United States are free of M. tb infection, while maintaining the same total volume of immigration.")
 
-      tags$li(
-        "No LTBI Among Immigrants after 2016 - From 2016 onwards, all individuals
-        immigrating to the United States are free of M. TB infection, while maintaining
-        the same total volume of immigration."
-      )
-    )
+    ),
+
+    h3("508 Accessibility of This Product"),
+
+    p("Section 508 requires Federal agencies and grantees receiving Federal funds to ensure that individuals with disabilities who are members of the public or Federal employees have access to and use of electronic and information technology (EIT) that is comparable to that provided to individuals without disabilities, unless an undue burden would be imposed on the agency."),
+
+    p("If you need assistance with this web application, please contact ctesta@hsph.harvard.edu")
+
   )
 }
