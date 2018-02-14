@@ -70,12 +70,12 @@ outcomes:
   - tb_incidence_000s
   - tb_mortality_000s
   labels:
-    pct_ltbi: LTBI prevalence (per million)
-    tb_incidence_per_mil: TB incidence (per million)
-    tb_mortality_per_mil: TB-related deaths (per million)
-    ltbi_000s: New TB infections (in thousands)
-    tb_incidence_000s: TB incidence (in thousands)
-    tb_mortality_000s: TB-related deaths (in thousands)
+    pct_ltbi: LTBI Prevalence (percentage)
+    tb_incidence_per_mil: TB Incidence (per million)
+    tb_mortality_per_mil: TB-Related Deaths (per million)
+    ltbi_000s: LTBI Prevalence (in thousands)
+    tb_incidence_000s: TB Incidence (in thousands)
+    tb_mortality_000s: TB-Related Deaths (in thousands)
   formatted:
     pct_ltbi: |-
       LTBI prevalence
