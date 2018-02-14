@@ -99,7 +99,7 @@ outcomes:
       LTBI Prevalence
       (percentage)
     tb_incidence_per_mil: |-
-      Incident M. TB Infection
+      TB Incidence
       (per million)
     pct_mdrtb_in_incident_tb: |-
       MDR-TB in Incident TB Cases
