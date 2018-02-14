@@ -81,19 +81,19 @@ outcomes:
       LTBI prevalence
       (percentage)
     tb_incidence_per_mil: |-
-      TB incidence
+      TB Incidence
       (per million)
     tb_mortality_per_mil: |-
-      TB-related deaths
+      TB-Related Deaths
       (per million)
     ltbi_000s: |-
-      New TB infections
+      LTBI Prevalence
       (in thousands)
     tb_incidence_000s: |-
-      TB incidence
+      TB Incidence
       (in thousands)
     tb_mortality_000s: |-
-      TB-related deaths
+      TB-Related Deaths
       (in thousands)
   descriptions:
     pct_ltbi: Prevalence of latent M. TB infection at mid-point of year
