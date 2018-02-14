@@ -196,7 +196,8 @@ function(input, output, session) {
         panel.grid = element_blank(),
         panel.border = element_blank(),
         panel.ontop = TRUE
-      )
+      ) +
+      expand_limits(y=0)
   })
 
   output[[estimates$IDs$plot]] <- renderPlot({
@@ -363,7 +364,8 @@ function(input, output, session) {
         panel.grid.minor = element_blank(),
         panel.grid.major.x = element_blank(),
         panel.grid.major.y = element_line(size = 0.15, color = "#989898")
-      )
+      ) +
+      expand_limits(y=0)
   })
 
   output[[trends$IDs$plot]] <- renderPlot({
@@ -518,7 +520,8 @@ function(input, output, session) {
         panel.grid.major.y = element_line(size = 0.15, color = "#989898"),
         strip.background = element_blank(),
         strip.text = element_blank()
-      )
+      ) +
+      expand_limits(y=0)
   })
 
   output[[agegroups$IDs$plot]] <- renderPlot({
