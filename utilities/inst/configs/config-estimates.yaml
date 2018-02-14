@@ -93,7 +93,7 @@ outcomes:
     tb_infection_per_mil: New TB infections
     pct_ltbi: LTBI prevalence
     tb_incidence_per_mil: TB incidence
-    pct_mdrtb_in_incident_tb: MDR-TB in new TB cases
+    pct_mdrtb_in_incident_tb: MDR-TB in Incident TB cases
     tb_deaths_per_mil: TB-related deaths
   formatted:
     tb_infection_per_mil: |-
@@ -106,7 +106,7 @@ outcomes:
       Incident M. TB Infection
       (per million)
     pct_mdrtb_in_incident_tb: |-
-      MDR-TB in New TB Cases
+      MDR-TB in Incident TB Cases
       (percentage)
     tb_deaths_per_mil: |-
       TB-Related Deaths

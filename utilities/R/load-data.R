@@ -13,7 +13,7 @@
 #' 1. Incident M. TB Infection (per Mil)
 #' 2. LTBI Prevalence (%)
 #' 3. New TB Cases (per Mil)
-#' 4. MDR-TB in New TB Cases (%)
+#' 4. MDR-TB in Incident TB Cases (%)
 #' 5. TB-Related Deaths (per Mil)
 #'
 #' @section Scenarios:
