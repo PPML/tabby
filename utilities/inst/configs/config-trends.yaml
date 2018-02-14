@@ -26,7 +26,7 @@ comparators:
   - pct_basecase_same_year
   - pct_basecase_2016
   labels:
-    absolute_value: Estimated values
+    absolute_value: Absolute values
     pct_basecase_same_year: Percentage of base case value in the same year
     pct_basecase_2016: Percentage of base case value in 2016
   formatted:
