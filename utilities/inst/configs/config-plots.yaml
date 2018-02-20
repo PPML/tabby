@@ -9,7 +9,7 @@ colors:
   scenario_1: '#ED6925FF'
   scenario_2: '#FB9A06FF'
 shapes:
-  base_case: 21
+  base_case: 4
   intervention_1: 21
   intervention_2: 22
   intervention_3: 23
