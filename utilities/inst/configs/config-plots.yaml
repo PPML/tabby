@@ -9,14 +9,23 @@ colors:
   scenario_1: '#ED6925FF'
   scenario_2: '#FB9A06FF'
 shapes:
-  base_case: 4
+  base_case: 21
   intervention_1: 21
   intervention_2: 22
   intervention_3: 23
   intervention_4: 24
   intervention_5: 25
-  scenario_1: 7
-  scenario_2: 9
+  scenario_1: 22
+  scenario_2: 23
+fills:
+  - '#F5F5F5'
+  - '#1B0C42FF'
+  - '#4B0C6BFF'
+  - '#781C6DFF'
+  - '#A52C60FF'
+  - '#CF4446FF'
+  - '#F5F5F5'
+  - '#F5F5F5'
 linetypes:
   base_case: 'solid'
   intervention_1: 'dashed'
