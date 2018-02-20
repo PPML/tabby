@@ -4,7 +4,7 @@
 position_year <- function(scenario) {
   n <- n_distinct(scenario)
   counts <- table(scenario)
-  flatten_dbl(map2(symmetric_seq(n, 1.5), counts[counts != 0], ~ rep(., .y)))
+  flatten_dbl(map2(symmetric_seq(n, 2.3), counts[counts != 0], ~ rep(., .y)))
 }
 
 split3 <- function(x, n) {
