@@ -137,10 +137,16 @@ function(input, output, session) {
           shape = scenario,
           fill = scenario
         ),
+        size = 1,
         fatten = 4
       ) +
       estimatesLabels() +
       scale_color_manual(
+        name = "Scenario",
+        values = plots$colors,
+        labels = plots$labels
+      ) +
+      scale_fill_manual(
         name = "Scenario",
         values = plots$colors,
         labels = plots$labels
@@ -165,10 +171,11 @@ function(input, output, session) {
         subtitle = estimates$comparators$formatted[[input[[estimates$IDs$controls$comparators]]]]
       ) +
       guides(
-        color = guide_legend(ncol = 4),
+        color = guide_legend(ncol = 4)
         # color = guide_legend(nrow = min(n_distinct(data$scenario), 2)),
         # shape = guide_legend(nrow = min(n_distinct(data$scenario), 2)),
-        fill = FALSE
+        # fill = FALSE
+        # fill=guide_legend(override.aes=list(shape=21))
       ) +
       theme_bw() +
       theme(
