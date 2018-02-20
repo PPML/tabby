@@ -755,7 +755,11 @@ function(input, output, session) {
         mutate(
           year = ifelse(year == 2000, 2016, year)
         ) %>%
+        mutate(
+          agegroup_start = as.numeric(sapply(strsplit(age_group, split="[-+]"), `[[`, 1))
+        ) %>%
         spread(type, value) %>%
+        arrange(agegroup_start) %>%
         select(
           outcome, scenario, age_group, year, mean, ci_high, ci_low
         ) %>%
@@ -774,7 +778,11 @@ function(input, output, session) {
         mutate(
           year = ifelse(year == 2000, 2016, year)
         ) %>%
+        mutate(
+          agegroup_start = as.numeric(sapply(strsplit(age_group, split="[-+]"), `[[`, 1))
+        ) %>%
         spread(type, value) %>%
+        arrange(agegroup_start) %>%
         select(
           outcome, scenario, age_group, year, mean, ci_high, ci_low
         ) %>%
