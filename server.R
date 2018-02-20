@@ -588,6 +588,8 @@ function(input, output, session) {
           year = ifelse(year == 2000, 2016, year)
         ) %>%
         spread(type, value) %>%
+        mutate(scenario = sapply(scenario, function(x) c(estimates$interventions$labels, estimates$analyses$labels, c(base_case = "Base Case"))[[x]])) %>%
+        mutate(outcome = sapply(outcome, function(x) estimates$outcomes$labels[[x]])) %>%
         select(
           outcome, scenario, age_group, year, mean, ci_high, ci_low
         ) %>%
@@ -607,6 +609,8 @@ function(input, output, session) {
           year = ifelse(year == 2000, 2016, year)
         ) %>%
         spread(type, value) %>%
+        mutate(scenario = sapply(scenario, function(x) c(estimates$interventions$labels, estimates$analyses$labels, c(base_case = "Base Case"))[[x]])) %>%
+        mutate(outcome = sapply(outcome, function(x) estimates$outcomes$labels[[x]])) %>%
         select(
           outcome, scenario, age_group, year, mean, ci_high, ci_low
         ) %>%
@@ -672,6 +676,8 @@ function(input, output, session) {
           year = ifelse(year == 2000, 2016, year)
         ) %>%
         spread(type, value) %>%
+        mutate(scenario = sapply(scenario, function(x) c(trends$interventions$labels, trends$analyses$labels, c(base_case = "Base Case"))[[x]])) %>%
+        mutate(outcome = sapply(outcome, function(x) trends$outcomes$labels[[x]])) %>%
         select(
           outcome, scenario, age_group, year, mean, ci_high, ci_low
         ) %>%
@@ -691,6 +697,8 @@ function(input, output, session) {
           year = ifelse(year == 2000, 2016, year)
         ) %>%
         spread(type, value) %>%
+        mutate(scenario = sapply(scenario, function(x) c(trends$interventions$labels, trends$analyses$labels, c(base_case = "Base Case"))[[x]])) %>%
+        mutate(outcome = sapply(outcome, function(x) trends$outcomes$labels[[x]])) %>%
         select(
           outcome, scenario, age_group, year, mean, ci_high, ci_low
         ) %>%
@@ -759,6 +767,8 @@ function(input, output, session) {
           agegroup_start = as.numeric(sapply(strsplit(age_group, split="[-+]"), `[[`, 1))
         ) %>%
         spread(type, value) %>%
+        mutate(scenario = sapply(scenario, function(x) c(agegroups$interventions$labels, agegroups$analyses$labels, c(base_case = "Base Case"))[[x]])) %>%
+        mutate(outcome = sapply(outcome, function(x) agegroups$outcomes$labels[[x]])) %>%
         arrange(agegroup_start) %>%
         select(
           outcome, scenario, age_group, year, mean, ci_high, ci_low
@@ -782,6 +792,8 @@ function(input, output, session) {
           agegroup_start = as.numeric(sapply(strsplit(age_group, split="[-+]"), `[[`, 1))
         ) %>%
         spread(type, value) %>%
+        mutate(scenario = sapply(scenario, function(x) c(agegroups$interventions$labels, agegroups$analyses$labels, c(base_case = "Base Case"))[[x]])) %>%
+        mutate(outcome = sapply(outcome, function(x) agegroups$outcomes$labels[[x]])) %>%
         arrange(agegroup_start) %>%
         select(
           outcome, scenario, age_group, year, mean, ci_high, ci_low

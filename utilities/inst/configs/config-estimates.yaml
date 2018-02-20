@@ -92,7 +92,7 @@ outcomes:
   labels:
     tb_infection_per_mil: Incident M. tb Infections
     pct_ltbi: LTBI prevalence
-    tb_incidence_per_mil: TB incidence
+    tb_incidence_per_mil: Active TB incidence
     pct_mdrtb_in_incident_tb: MDR-TB in Incident TB cases
     tb_deaths_per_mil: TB-related deaths
   formatted:
@@ -103,7 +103,7 @@ outcomes:
       LTBI Prevalence
       (percentage)
     tb_incidence_per_mil: |-
-      TB Incidence
+      Active TB Incidence
       (per million)
     pct_mdrtb_in_incident_tb: |-
       MDR-TB in Incident TB Cases
