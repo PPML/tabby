@@ -18,14 +18,14 @@ shapes:
   scenario_1: 22
   scenario_2: 23
 fills:
-  - '#F5F5F5'
-  - '#1B0C42FF'
-  - '#4B0C6BFF'
-  - '#781C6DFF'
-  - '#A52C60FF'
-  - '#CF4446FF'
-  - '#F5F5F5'
-  - '#F5F5F5'
+  base_case: '#F5F5F5'
+  intervention_1: '#1B0C42FF'
+  intervention_2: '#4B0C6BFF'
+  intervention_3: '#781C6DFF'
+  intervention_4: '#A52C60FF'
+  intervention_5: '#CF4446FF'
+  scenario_1: '#F5F5F5'
+  scenario_2: '#F5F5F5'
 linetypes:
   base_case: 'solid'
   intervention_1: 'dashed'

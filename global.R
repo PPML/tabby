@@ -23,7 +23,7 @@ AGEGROUPS_DATA <- data_agegroups()
 
 plots <- config_plots()
 # bit of a hacky work around
-for (i in c("colors", "shapes", "linetypes", "labels")) {
+for (i in c("colors", "fills", "shapes", "linetypes", "labels")) {
   plots[[i]] <- unlist(plots[[i]])
 }
 
