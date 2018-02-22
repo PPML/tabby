@@ -465,8 +465,10 @@ function(input, output, session) {
           ymin = data$ci_low,
           ymax = data$ci_high,
           color = scenario,
-          shape = scenario
+          shape = scenario,
+          fill = scenario
         ),
+        size = 1,
         position = dodge
       ) +
       scale_x_discrete(
