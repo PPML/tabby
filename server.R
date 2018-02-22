@@ -481,7 +481,7 @@ function(input, output, session) {
       ) +
       scale_fill_manual(
         name = "Scenario",
-        values = plots$colors,
+        values = plots$fills,
         labels = plots$labels
       ) +
       scale_color_manual(

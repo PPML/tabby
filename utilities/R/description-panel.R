@@ -35,6 +35,8 @@ descriptionPanel <- function() {
 
     p("The estimates shown by Tabby are based on a transmission-dynamic model of TB epidemiology in the US, incorporating TB transmission and natural history; TB drug resistance patterns; prior and future TB prevention and control; the impact of HIV on TB; heterogeneity in TB risks among US-born and foreign-born populations; and age-based differences in disease mechanisms and risk factor prevalence. Detailed methods (analytic methods, scenario and outcome definitions) and main results for this analysis are described in detail in \"Prospects for tuberculosis elimination in the United States: results of a transmission dynamic model\" [citation info to be added]."),
 
+    p("The findings and conclusions described in this web application and linked journal article are those of the author(s) and do not necessarily represent the views of the US Centers for Disease Control and Prevention. This web tool was funded by the CDC, National Center for HIV, Viral Hepatitis, STD, and TB Prevention Epidemiologic and Economic Modeling Agreement (NEEMA, # 5U38PS004644-01)."),
+
     h3("Organization"),
 
     p("Tabby has three pages with interactive visualizations: ", tags$em("Estimates, Time Trends,"), " and ", tags$em("Age Groups."), "Each page can be accessed from the menu bar at the top of the page."),
@@ -55,7 +57,7 @@ descriptionPanel <- function() {
 
     p(tags$em("Download:"), " clicking on a button initiates download of the visualization itself (.png, .pdf, .pptx) or the estimates underlying the visualization (.csv, .xlsx)."),
 
-    h4("Age groups page"),
+    h4("Age Groups page"),
 
     p("This page matches the format of the first two pages with the following exceptions:"),
 
@@ -69,7 +71,7 @@ descriptionPanel <- function() {
 
     h3("Scenarios"),
 
-    h4("Intervention scenarios"),
+    h4("Intervention Scenarios"),
 
     tags$ul(
       tags$li("'TLTBI for New Immigrants': Provision of LTBI testing and treatment for all new legal immigrants entering the US."),
