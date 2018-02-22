@@ -98,7 +98,7 @@ descriptionPanel <- function() {
 
     p("Section 508 requires Federal agencies and grantees receiving Federal funds to ensure that individuals with disabilities who are members of the public or Federal employees have access to and use of electronic and information technology (EIT) that is comparable to that provided to individuals without disabilities, unless an undue burden would be imposed on the agency."),
 
-    p("If you need assistance with this web application, please contact ", tags$a("ppml@hsph.harvard.edu", href='mailto:ppml@hsph.harvard.edu'))
+    p("if you need assistance with this web application, please contact ", tags$a("ppml@hsph.harvard.edu", href='mailto:ppml@hsph.harvard.edu'), ".")
 
   )
 }
