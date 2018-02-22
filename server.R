@@ -137,8 +137,8 @@ function(input, output, session) {
           shape = scenario,
           fill = scenario
         ),
-        size = 1,
-        fatten = 4
+        size = 0.5,
+        fatten = 8
       ) +
       estimatesLabels() +
       scale_color_manual(
@@ -468,7 +468,8 @@ function(input, output, session) {
           shape = scenario,
           fill = scenario
         ),
-        size = 1,
+        size = .5,
+        fatten = 8,
         position = dodge
       ) +
       scale_x_discrete(
@@ -485,7 +486,7 @@ function(input, output, session) {
       ) +
       scale_color_manual(
         name = "Scenario",
-        values = darken(plots$colors, 1.75),
+        values = plots$colors, # darken(plots$colors, 1.75),
         labels = plots$labels
       ) +
       scale_shape_manual(
