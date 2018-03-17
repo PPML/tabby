@@ -1,40 +1,40 @@
 font: Helvetica-Narrow
 colors:
-  base_case: '#000004FF'
-  intervention_1: '#1B0C42FF'
-  intervention_2: '#4B0C6BFF'
-  intervention_3: '#781C6DFF'
-  intervention_4: '#A52C60FF'
-  intervention_5: '#CF4446FF'
-  scenario_1: '#ED6925FF'
-  scenario_2: '#FB9A06FF'
+  - '#000004FF'
+  - '#1B0C42FF'
+  - '#4B0C6BFF'
+  - '#781C6DFF'
+  - '#A52C60FF'
+  - '#CF4446FF'
+  - '#ED6925FF'
+  - '#FB9A06FF'
 shapes:
-  base_case: 4
-  intervention_1: 21
-  intervention_2: 22
-  intervention_3: 23
-  intervention_4: 24
-  intervention_5: 25
-  scenario_1: 22
-  scenario_2: 23
+  - 4
+  - 21
+  - 22
+  - 23
+  - 24
+  - 25
+  - 22
+  - 23
 fills:
-  base_case: '#F5F5F5'
-  intervention_1: '#1B0C42FF'
-  intervention_2: '#4B0C6BFF'
-  intervention_3: '#781C6DFF'
-  intervention_4: '#A52C60FF'
-  intervention_5: '#CF4446FF'
-  scenario_1: '#F5F5F5'
-  scenario_2: '#F5F5F5'
+  - '#F5F5F5'
+  - '#1B0C42FF'
+  - '#4B0C6BFF'
+  - '#781C6DFF'
+  - '#A52C60FF'
+  - '#CF4446FF'
+  - '#F5F5F5'
+  - '#F5F5F5'
 linetypes:
-  base_case: 'solid'
-  intervention_1: 'dashed'
-  intervention_2: 'dotted'
-  intervention_3: 'dotdash'
-  intervention_4: 'longdash'
-  intervention_5: 'twodash'
-  scenario_1: '4C88C488'
-  scenario_2: '12345678'
+  - 'solid'
+  - 'dashed'
+  - 'dotted'
+  - 'dotdash'
+  - 'longdash'
+  - 'twodash'
+  - '4C88C488'
+  - '12345678'
 labels:
   base_case: Base case
   intervention_1: TLTBI for new immigrants
@@ -48,6 +48,21 @@ labels:
   scenario_2: |-
     No LTBI among
     immigrants after 2016
+  scenario_3: |-
+    Reduced TB prevention
+    effort
+  scenario_4: |-
+    Rising MDR-TB in
+    immigrants
+  scenario_5: |-
+    In-migration held
+    constant
+  scenario_6: |-
+    Improving global TB
+    control
+  scenario_7: |-
+    Rising reactivation
+    risk
 region:
   year:
     - 2000.0
