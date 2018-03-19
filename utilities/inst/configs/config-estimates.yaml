@@ -166,9 +166,19 @@ analyses:
   values:
   - scenario_1
   - scenario_2
+  - scenario_3
+  - scenario_4
+  - scenario_5
+  - scenario_6
+  - scenario_7
   labels:
     scenario_1: No transmission within the US after 2016
     scenario_2: No LTBI among immigrants after 2016
+    scenario_3: Reduced TB prevention effort
+    scenario_4: Rising MDR-TB in immigrants
+    scenario_5: In-migration held constant
+    scenario_6: Improving global TB control
+    scenario_7: Rising reactivation risks
   formatted:
     scenario_1: |-
       No transmission within
@@ -176,6 +186,21 @@ analyses:
     scenario_2: |-
       No LTBI among
       immigrants after 2016
+    scenario_3: |-
+      Reduced TB prevention
+      effort
+    scenario_4: |-
+      Rising MDR-TB in
+      immigrants
+    scenario_5: |-
+      In-migration held
+      constant
+    scenario_6: |-
+      Improving global TB
+      control
+    scenario_7: |-
+      Rising reactivation
+      risks
   descriptions:
     scenario_1: From 2016 onwards, no individuals acquire M. TB infection from transmission within
       the United States. In this scenario the only source of new LTBI cases is from
