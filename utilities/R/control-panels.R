@@ -174,8 +174,20 @@ controlPanel <- function(class, active = FALSE, comparators = NULL,
     ages,
     years,
     outcomes,
-    interventions,
-    analyses,
+    selectInput(
+      inputId = paste0(strsplit(class, "-")[[1]][[1]], 'InterventionsOrAnalyses'),
+      label = 'Choose Scenarios for Visualization',
+      choices = c('Intervention Scenarios', 'Additional Scenarios'),
+      selected = 'Intervention Scenarios'
+    ),
+    conditionalPanel(
+      condition = paste0("input.", strsplit(class, "-")[[1]][[1]], "InterventionsOrAnalyses == 'Intervention Scenarios'"),
+      interventions
+    ),
+    conditionalPanel(
+      condition = paste0("input.", strsplit(class, "-")[[1]][[1]], "InterventionsOrAnalyses == 'Additional Scenarios'"),
+      analyses
+    ),
     labels,
     downloads
   )

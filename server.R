@@ -1,6 +1,19 @@
 function(input, output, session) {
   # (to use these headings press COMMAND+SHIFT+O)
   # estimates server ----
+  # toggle interventions or analyses----
+  observe({
+    x <- input[['estimatesInterventionsOrAnalyses']]
+    if (!is.null(x) && x == 'Intervention Scenarios') {
+      for (n in 1:length(estimates$analyses$values)) {
+        updateCheckboxInput(session, inputId = paste0("estimatesAnalyses-", n), value = FALSE)
+      }
+    } else if (!is.null(x) && x == 'Additional Scenarios') {
+      for (n in 1:length(estimates$interventions$values)) {
+        updateCheckboxInput(session, inputId = paste0("estimatesInterventions-", n), value = FALSE)
+      }
+    }
+  })
   # __calculate data ----
   estimatesData <- reactive({
     req(
