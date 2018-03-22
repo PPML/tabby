@@ -46,7 +46,7 @@ populations:
   labels:
     all_populations: Total
     usb_population: US-born
-    fb_population: Foreign-born
+    fb_population: Non-US-born
   selected:
   - yes
   - no
@@ -54,7 +54,7 @@ populations:
   formatted:
     all_populations: total US population
     usb_population: US-born population
-    fb_population: foreign-born US population
+    fb_population: non-US-born population
 ages:
   heading: Age groups
   values:
@@ -124,7 +124,7 @@ outcomes:
   - no
   - no
 interventions:
-  heading: Intervention scenarios
+  heading: Modeled scenarios
   values:
   - intervention_1
   - intervention_2
@@ -153,7 +153,7 @@ interventions:
       regimen are reduced by 50% from current levels
     intervention_5: The combination of all intervention scenarios described above
 analyses:
-  heading: Additional scenarios
+  heading: Sensitivity analyses
   values:
   - scenario_1
   - scenario_2
@@ -164,7 +164,7 @@ analyses:
   - scenario_7
   labels:
     scenario_1: No transmission within the US after 2016
-    scenario_2: No LTBI among immigrants after 2016
+    scenario_2: No TB or LTBI in New Migrants after 2016
     scenario_3: Reduced TB prevention effort
     scenario_4: Rising MDR-TB in immigrants
     scenario_5: In-migration held constant
@@ -175,8 +175,8 @@ analyses:
       No transmission within
       the US after 2016
     scenario_2: |-
-      No LTBI among
-      immigrants after 2016
+      No TB or LTBI in new
+      migrants after 2016
     scenario_3: |-
       Reduced TB prevention
       effort
