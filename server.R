@@ -419,7 +419,6 @@ function(input, output, session) {
   # __toggle interventions or analyses----
   observe({
     x <- input[['agegroupsInterventionsOrAnalyses']]
-    cat("made it here!\n")
     if (!is.null(x) && x == 'Intervention Scenarios') {
       for (n in 1:length(estimates$analyses$values)) {
         updateCheckboxInput(session, inputId = paste0("agegroupAnalyses-", n), value = FALSE)
