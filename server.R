@@ -416,6 +416,20 @@ function(input, output, session) {
 
 
   # ages server ----
+  # __toggle interventions or analyses----
+  observe({
+    x <- input[['agegroupsInterventionsOrAnalyses']]
+    cat("made it here!\n")
+    if (!is.null(x) && x == 'Intervention Scenarios') {
+      for (n in 1:length(estimates$analyses$values)) {
+        updateCheckboxInput(session, inputId = paste0("agegroupAnalyses-", n), value = FALSE)
+      }
+    } else if (!is.null(x) && x == 'Additional Scenarios') {
+      for (n in 1:length(estimates$interventions$values)) {
+        updateCheckboxInput(session, inputId = paste0("agegroupInterventions-", n), value = FALSE)
+      }
+    }
+  })
   # __calculate data ----
   agegroupsData <- reactive({
     req(
