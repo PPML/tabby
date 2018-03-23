@@ -4,11 +4,11 @@ function(input, output, session) {
   # __toggle interventions or analyses----
   observe({
     x <- input[['estimatesInterventionsOrAnalyses']]
-    if (!is.null(x) && x == 'Intervention Scenarios') {
+    if (!is.null(x) && x == 'Modeled Scenarios') {
       for (n in 1:length(estimates$analyses$values)) {
         updateCheckboxInput(session, inputId = paste0("estimatesAnalyses-", n), value = FALSE)
       }
-    } else if (!is.null(x) && x == 'Additional Scenarios') {
+    } else if (!is.null(x) && x == 'Sensitivity Analyses') {
       for (n in 1:length(estimates$interventions$values)) {
         updateCheckboxInput(session, inputId = paste0("estimatesInterventions-", n), value = FALSE)
       }
@@ -232,13 +232,13 @@ function(input, output, session) {
   # __toggle interventions or analyses----
   observe({
     x <- input[['trendsInterventionsOrAnalyses']]
-    if (!is.null(x) && x == 'Intervention Scenarios') {
+    if (!is.null(x) && x == 'Modeled Scenarios') {
       for (n in 1:length(estimates$analyses$values)) {
         updateCheckboxInput(session,
                             inputId = paste0("trendsAnalyses-", n),
                             value = FALSE)
       }
-    } else if (!is.null(x) && x == 'Additional Scenarios') {
+    } else if (!is.null(x) && x == 'Sensitivity Analyses') {
       for (n in 1:length(estimates$interventions$values)) {
         updateCheckboxInput(session,
                             inputId = paste0("trendsInterventions-", n),
@@ -419,11 +419,11 @@ function(input, output, session) {
   # __toggle interventions or analyses----
   observe({
     x <- input[['agegroupsInterventionsOrAnalyses']]
-    if (!is.null(x) && x == 'Intervention Scenarios') {
+    if (!is.null(x) && x == 'Modeled Scenarios') {
       for (n in 1:length(estimates$analyses$values)) {
         updateCheckboxInput(session, inputId = paste0("agegroupAnalyses-", n), value = FALSE)
       }
-    } else if (!is.null(x) && x == 'Additional Scenarios') {
+    } else if (!is.null(x) && x == 'Sensitivity Analyses') {
       for (n in 1:length(estimates$interventions$values)) {
         updateCheckboxInput(session, inputId = paste0("agegroupInterventions-", n), value = FALSE)
       }

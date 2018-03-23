@@ -177,15 +177,15 @@ controlPanel <- function(class, active = FALSE, comparators = NULL,
     selectInput(
       inputId = paste0(strsplit(class, "-")[[1]][[1]], 'InterventionsOrAnalyses'),
       label = 'Choose Scenarios for Visualization',
-      choices = c('Intervention Scenarios', 'Additional Scenarios'),
-      selected = 'Intervention Scenarios'
+      choices = c('Modeled Scenarios', 'Sensitivity Analyses'),
+      selected = 'Modeled Scenarios'
     ),
     conditionalPanel(
-      condition = paste0("input.", strsplit(class, "-")[[1]][[1]], "InterventionsOrAnalyses == 'Intervention Scenarios'"),
+      condition = paste0("input.", strsplit(class, "-")[[1]][[1]], "InterventionsOrAnalyses == 'Modeled Scenarios'"),
       interventions
     ),
     conditionalPanel(
-      condition = paste0("input.", strsplit(class, "-")[[1]][[1]], "InterventionsOrAnalyses == 'Additional Scenarios'"),
+      condition = paste0("input.", strsplit(class, "-")[[1]][[1]], "InterventionsOrAnalyses == 'Sensitivity Analyses'"),
       analyses
     ),
     labels,
