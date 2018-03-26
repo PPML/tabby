@@ -28,21 +28,18 @@ estimatesControlPanel  <- function() {
       labels = estimates$outcomes$labels,
       values = estimates$outcomes$values,
       selected = estimates$outcomes$selected,
-      descriptions = estimates$outcomes$descriptions
     ),
     interventions = checkboxGroup2(
       id = estimates$IDs$controls$interventions,
       heading = estimates$interventions$heading,
       labels = estimates$interventions$labels,
       values = estimates$interventions$values,
-      descriptions = estimates$interventions$descriptions
     ),
     analyses = checkboxGroup2(
       id = estimates$IDs$controls$analyses,
       heading = estimates$analyses$heading,
       labels = estimates$analyses$labels,
       values = estimates$analyses$values,
-      descriptions = estimates$analyses$descriptions
     ),
     labels = selectInput(
       inputId = estimates$IDs$controls$labels,
@@ -95,14 +92,12 @@ trendsControlPanel <- function() {
       heading = trends$interventions$heading,
       labels = trends$interventions$labels,
       values = trends$interventions$values,
-      descriptions = trends$interventions$descriptions
     ),
     analyses = checkboxGroup2(
       id = trends$IDs$controls$analyses,
       heading = trends$analyses$heading,
       labels = trends$analyses$labels,
       values = trends$analyses$values,
-      descriptions = trends$analyses$descriptions
     ),
     downloads = downloadButtonBar(
       ids = trends$IDs$downloads,
@@ -138,21 +133,18 @@ agegroupsControlPanel <- function() {
       labels = agegroups$outcomes$labels,
       values = agegroups$outcomes$values,
       selected = agegroups$outcomes$selected,
-      descriptions = agegroups$outcomes$descriptions
     ),
     interventions = checkboxGroup2(
       id = agegroups$IDs$controls$interventions,
       heading = agegroups$interventions$heading,
       labels = agegroups$interventions$labels,
       values = agegroups$interventions$values,
-      descriptions = agegroups$interventions$descriptions
     ),
     analyses = checkboxGroup2(
       id = agegroups$IDs$controls$analyses,
       heading = agegroups$analyses$heading,
       labels = agegroups$analyses$labels,
       values = agegroups$analyses$values,
-      descriptions = agegroups$analyses$descriptions
     ),
     downloads = downloadButtonBar(
       ids = agegroups$IDs$downloads,
@@ -181,11 +173,17 @@ controlPanel <- function(class, active = FALSE, comparators = NULL,
       selected = 'Modeled Scenarios'
     ),
     conditionalPanel(
-      condition = paste0("input.", strsplit(class, "-")[[1]][[1]], "InterventionsOrAnalyses == 'Modeled Scenarios'"),
+      condition =
+        paste0("input.",
+               strsplit(class, "-")[[1]][[1]],
+               "InterventionsOrAnalyses == 'Modeled Scenarios'"),
       interventions
     ),
     conditionalPanel(
-      condition = paste0("input.", strsplit(class, "-")[[1]][[1]], "InterventionsOrAnalyses == 'Sensitivity Analyses'"),
+      condition =
+        paste0("input.",
+               strsplit(class, "-")[[1]][[1]],
+               "InterventionsOrAnalyses == 'Sensitivity Analyses'"),
       analyses
     ),
     labels,
