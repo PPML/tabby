@@ -164,7 +164,7 @@ analyses:
   - scenario_7
   labels:
     scenario_1: No transmission within the US after 2016
-    scenario_2: No TB or LTBI in New Migrants after 2016
+    scenario_2: No TB or LTBI in new migrants after 2016
     scenario_3: Reduced TB prevention effort
     scenario_4: Rising MDR-TB in immigrants
     scenario_5: In-migration held constant
