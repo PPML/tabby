@@ -185,10 +185,6 @@ function(input, output, session) {
       ) +
       guides(
         color = guide_legend(ncol = 4)
-        # color = guide_legend(nrow = min(n_distinct(data$scenario), 2)),
-        # shape = guide_legend(nrow = min(n_distinct(data$scenario), 2)),
-        # fill = FALSE
-        # fill=guide_legend(override.aes=list(shape=21))
       ) +
       theme_bw() +
       theme(
@@ -374,8 +370,6 @@ function(input, output, session) {
       ) +
       guides(
         color = guide
-        # fill = guide,
-        # linetype = guide
       ) +
       theme_bw() +
       theme(
@@ -495,14 +489,6 @@ function(input, output, session) {
     dodge <- position_dodge(0.85)
 
     ggplot(data, aes(x = age_group)) +
-      # geom_bar(
-      #   mapping = aes(
-      #     y = mean,
-      #     fill = scenario
-      #   ),
-      #   stat = "identity",
-      #   position = dodge
-      # ) +
       geom_pointrange(
         mapping = aes(
           y = mean,
