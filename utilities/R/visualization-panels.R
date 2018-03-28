@@ -72,9 +72,6 @@ visualizationPanel <- function(id, title, subtitle, plot, alt = NULL, brush = NU
             tags$img(alt = alt)
           )
         )
-#        if (!is.null(brush)) formatOptNames(brush, "brush"),
-#        if (!is.null(click)) formatOptNames(click, "click"),
-#        if (!is.null(dblclick)) formatOptNames(dblclick, "dblclick")
       )
     )
   )
