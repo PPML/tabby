@@ -3,6 +3,7 @@ fluidPage(
   includeScript("www/js/tab-keypress.js"),
   includeScript("www/js/add-select-instructions.js"),
   tags$head(
+    tags$link(rel = "stylesheet", type = "text/css", href = "bootstrap.css"),
     tags$style(
       type = "text/css",
       ".main-content { margin-top: 65px; }",
@@ -34,6 +35,40 @@ fluidPage(
                   `aria-hidden` = TRUE
                 ),
                 "About Tabby"
+              )
+            )
+          ),
+          tags$li(
+            role = "presentation",
+            tags$a(
+              `data-toggle` = "tab",
+              `data-value` = "definitions",
+              `data-target` = ".definitions-tab",
+              role = "tab",
+              tabindex = 0,
+              tags$span(
+                tagAppendAttributes(
+                  icon("align-left"),
+                  `aria-hidden` = TRUE
+                ),
+                "Definitions"
+              )
+            )
+          ),
+          tags$li(
+            role = "presentation",
+            tags$a(
+              `data-toggle` = "tab",
+              `data-value` = "faq",
+              `data-target` = ".faq-tab",
+              role = "tab",
+              tabindex = 0,
+              tags$span(
+                tagAppendAttributes(
+                  icon("question-circle"),
+                  `aria-hidden` = TRUE
+                ),
+                "FAQ"
               )
             )
           ),
@@ -97,15 +132,45 @@ fluidPage(
     column(
       width = 12,
       class="tab-content",
-      descriptionPanel(),
-      emptyEstimatesPanel(),
-      emptyTrendsPanel(),
-      emptyAgeGroupsPanel()
+      descriptionPanel(
+        tabclass = "about-tab active",
+        content = shiny::includeMarkdown(system.file("about-tabby.md", package = "utilities", mustWork = TRUE))),
+      emptyPanel("definitions-tab"),
+      emptyPanel("faq-tab"),
+      emptyPanel("estimates-tab"),
+      emptyPanel("trends-tab"),
+      emptyPanel("agegroups-tab")
+    ),
+    column(
+      width = 12,
+      class="tab-content",
+      descriptionPanel(
+        tabclass = "definitions-tab",
+        content = shiny::includeMarkdown(system.file("definitions.md", package = "utilities", mustWork = TRUE))),
+      emptyPanel("about-tab"),
+      emptyPanel("faq-tab"),
+      emptyPanel("estimates-tab"),
+      emptyPanel("trends-tab"),
+      emptyPanel("agegroups-tab")
+    ),
+    column(
+      width = 12,
+      class="tab-content",
+      descriptionPanel(
+        tabclass = "faq-tab",
+        content = shiny::includeMarkdown(system.file("faq.md", package = "utilities", mustWork = TRUE))),
+      emptyPanel("about-tab"),
+      emptyPanel("definitions-tab"),
+      emptyPanel("estimates-tab"),
+      emptyPanel("trends-tab"),
+      emptyPanel("agegroups-tab")
     ),
     column(
       width = 4,
       class = "tab-content",
-      emptyDescriptionPanel(),
+      emptyPanel("about-tab"),
+      emptyPanel("definitions-tab"),
+      emptyPanel("faq-tab"),
       estimatesControlPanel(),
       trendsControlPanel(),
       agegroupsControlPanel()
@@ -113,7 +178,9 @@ fluidPage(
     column(
       width = 8,
       class = "tab-content",
-      emptyDescriptionPanel(),
+      emptyPanel("about-tab"),
+      emptyPanel("definitions-tab"),
+      emptyPanel("faq-tab"),
       estimatesVisualizationPanel(),
       trendsVisualizationPanel(),
       agegroupsVisualizationPanel()
