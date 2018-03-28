@@ -186,6 +186,15 @@ controlPanel <- function(class, active = FALSE, comparators = NULL,
                "InterventionsOrAnalyses == 'Sensitivity Analyses'"),
       analyses
     ),
+    if (class=="trends-tab") {
+      checkboxGroup2(
+        id = paste0(strsplit(class, "-")[[1]][[1]],
+                    "ConfidenceInterval"),
+        heading = "Confidence Intervals",
+        labels = "Add confidence intervals to plots",
+        value = FALSE
+      )
+    },
     labels,
     downloads
   )

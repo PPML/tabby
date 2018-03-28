@@ -322,16 +322,7 @@ function(input, output, session) {
       nrow = min(n_distinct(data$scenario), 2)
     )
 
-    ggplot(data) +
-      geom_ribbon(
-        mapping = aes(
-          x = year,
-          ymin = ci_low,
-          ymax = ci_high,
-          fill = scenario
-        ),
-        alpha = 0.3
-      ) +
+    p <- ggplot(data) +
       geom_line(
         mapping = aes(
           x = year,
@@ -398,6 +389,21 @@ function(input, output, session) {
         panel.grid.major.y = element_line(size = 0.15, color = "#989898")
       ) +
       expand_limits(y=0)
+
+    if(input[['trendsConfidenceInterval-1']]) {
+      p <- p +
+        geom_ribbon(
+          mapping = aes(
+            x = year,
+            ymin = ci_low,
+            ymax = ci_high,
+            fill = scenario
+          ),
+          alpha = 0.3
+        )
+    }
+
+    return(p)
   })
 
   output[[trends$IDs$plot]] <- renderPlot({
