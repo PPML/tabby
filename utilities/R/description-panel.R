@@ -1,31 +1,22 @@
-emptyDescriptionPanel <- function() {
+#' Construct an Empty Panel where Content Used to Be
+#'
+#' This function is used in the ui.R to replace tab-content with
+#' empty content so that when the user clicks on different tabs
+#' the content is swapped out properly.
+emptyPanel <- function(tabclass) {
   tags$div(
-    class="about-tab tab-pane"
+    class = paste(tabclass, "tab-pane")
   )
 }
 
-emptyEstimatesPanel <- function() {
+#' Construct a Description Panel from Content intended for a Navbar Tab
+#'
+#' The tabclass will be appended with " tab-pane", so for example to construct
+#' the about-tab which is the first to display to the user we would use
+#' tabclass = "about-tab active".
+descriptionPanel <- function(tabclass, content) {
   tags$div(
-    class="estimates-tab tab-pane"
-  )
-}
-
-emptyTrendsPanel <- function() {
-  tags$div(
-    class="trends-tab tab-pane"
-  )
-}
-
-
-emptyAgeGroupsPanel <- function() {
-  tags$div(
-    class="agegroups-tab tab-pane"
-  )
-}
-
-descriptionPanel <- function() {
-  tags$div(
-    class="about-tab tab-pane active",
-    shiny::includeMarkdown(system.file("about-tabby.md", package = "utilities", mustWork = TRUE))
+    class=paste(tabclass, " tab-pane"),
+    content
   )
 }
