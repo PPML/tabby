@@ -4,11 +4,10 @@ colors:
   - "dodgerblue2"
   - "#E31A1C"
   - "green4"
+  - "purple"
   - "#FF7F00"
   - "skyblue2"
   - "#FB9A99"
-  - "palegreen2"
-  - "#CAB2D6"
 shapes:
   - 4
   - 21
@@ -23,11 +22,10 @@ fills:
   - "dodgerblue2"
   - "#E31A1C"
   - "green4"
+  - "purple"
   - "#FF7F00"
   - "skyblue2"
   - "#FB9A99"
-  - "palegreen2"
-  - "#CAB2D6"
 linetypes:
   - 'solid'
   - 'dashed'
