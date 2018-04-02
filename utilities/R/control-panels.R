@@ -192,7 +192,8 @@ controlPanel <- function(class, active = FALSE, comparators = NULL,
                     "ConfidenceInterval"),
         heading = "Confidence Intervals",
         labels = "Add confidence intervals to plots",
-        value = FALSE
+        values = "uncertainty_intervals",
+        selected = TRUE
       )
     },
     labels,

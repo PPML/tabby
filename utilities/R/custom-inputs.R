@@ -62,7 +62,7 @@ radioButtons2 <- function(id, heading, labels, values, selected, ...,
   )
 }
 
-checkboxGroup2 <- function(id, heading, labels, values, descriptions = NULL) {
+checkboxGroup2 <- function(id, heading, labels, values, selected = FALSE, descriptions = NULL) {
   if (is.null(descriptions)) {
     descriptions <- rep.int("", length(labels))
   }
@@ -85,11 +85,12 @@ checkboxGroup2 <- function(id, heading, labels, values, descriptions = NULL) {
       Map(
         label = labels,
         value = values,
+        select = selected,
         this = paste0(id, "-", seq_along(labels)),
         desc = descriptions,
         d_id = paste0(id, "Description-", seq_along(descriptions)),
-        function(label, value, this, desc, d_id) {
-          tags$div(
+        function(label, value, select, this, desc, d_id) {
+          result <- tags$div(
             class = "checkbox",
             role = "checkboxgroup",
             tabindex='0',
@@ -98,17 +99,19 @@ checkboxGroup2 <- function(id, heading, labels, values, descriptions = NULL) {
               tags$input(
                 type = "checkbox",
                 tabindex='-1',
-                `aria-checked` = "false",
+                `aria-checked` = tolower(as.character(select)),
+                value = value,
                 name = id,
                 id = this,
                 `aria-describedby` = paste(this, "label", sep="-"),
-                value = value,
                 tags$span(
                   class = paste(this, "label", sep="-"),
                   label)
               )
             )
           )
+          if (select) result$children[[length(result$children)]]$children[[1]] <- shiny::tagAppendAttributes(result$children[[length(result$children)]]$children[[1]] , checked = "checked")
+          return(result)
         }
       )
     )
