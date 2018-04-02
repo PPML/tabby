@@ -2,8 +2,8 @@ About Tabby
 ===========
 
 Tabby is a web application providing predictions of future tuberculosis (TB)
-epidemiology in the United States under a range of different assumptions
-and policy scenarios. Users can select a health outcome and
+epidemiology in the United States under a range of different assumptions and
+hypothetical scenarios. Users can select a health outcome and
 subpopulation of interest, then select one or multiple scenarios to
 compare. Results are displayed graphically, and following inputs from
 the user, the graphs update automatically to reflect the new selections.
@@ -15,16 +15,14 @@ Definitions page of the application. Additionally, common questions about Tabby
 are answered in the Frequently Asked Questions (FAQ) page. Any further questions
 may be directed to <ppml@hsph.harvard.edu>.
 
-The estimates shown by Tabby are based on a dynamic transmission-model
-of TB epidemiology in the US, incorporating TB transmission and natural
-history; TB drug resistance patterns; prior and future TB prevention and
-control; the impact of HIV on TB; heterogeneity in TB risks among
-US-born and non-US-born populations; and age-based differences in
-disease mechanisms and risk factor prevalence. Detailed methods
-(analytic methods, scenario and outcome definitions) and main results
-for this analysis are described in detail in "Prospects for tuberculosis
-elimination in the United States: results of a transmission dynamic
-model" \[citation info to be added\].
+
+The estimates shown by Tabby are based on a mathematical model of TB
+epidemiology in the US. The model can be used to investigate how changes in the
+drivers of TB epidemiology could lead to changes in long term epidemiology. For
+further details on the epidemiological factors included in the model, detailed
+methods, and main results see the paper “Prospects for tuberculosis elimination
+in the United States: results of a transmission dynamic model” \[citation info
+to be added\].
 
 The findings and conclusions described in this web application and
 linked journal article are those of the author(s) and do not necessarily
