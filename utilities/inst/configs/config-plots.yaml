@@ -24,8 +24,8 @@ fills:
   - "green4"
   - "purple"
   - "#FF7F00"
-  - "skyblue2"
-  - "#FB9A99"
+  - "#F5F5F5"
+  - "#F5F5F5"
 linetypes:
   - 'solid'
   - 'dashed'
