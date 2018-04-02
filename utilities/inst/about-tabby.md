@@ -1,28 +1,29 @@
 About Tabby
 ===========
 
-Tabby is a web application providing predictions of future tuberculosis (TB)
-epidemiology in the United States under a range of different assumptions and
-hypothetical scenarios. Users can select a health outcome and
-subpopulation of interest, then select one or multiple scenarios to
-compare. Results are displayed graphically, and following inputs from
-the user, the graphs update automatically to reflect the new selections.
+
+Tabby is a web application that predicts future tuberculosis (TB)
+epidemiology in the United States, based on hypothetical scenarios
+chosen by the user. Users can select a health outcome and population
+group of interest, then select one or multiple scenarios to compare.
+Results are displayed graphically, and following inputs from the user,
+the graphs update automatically to reflect the new selections.
 Visualizations can be downloaded in various formats, and the estimates
 underlying the graphs can also be downloaded in tabular format.
 
-For the definitions of terms and abbreviations used in this application, see the
-Definitions page of the application. Additionally, common questions about Tabby
-are answered in the Frequently Asked Questions (FAQ) page. Any further questions
-may be directed to <ppml@hsph.harvard.edu>.
-
+For the definitions of terms and abbreviations used in this application,
+see the Definitions page of the application. Additionally, common
+questions about Tabby are answered in the Frequently Asked Questions
+(FAQ) page. Any further questions may be directed
+to [*ppml@hsph.harvard.edu*](mailto:ppml@hsph.harvard.edu).
 
 The estimates shown by Tabby are based on a mathematical model of TB
-epidemiology in the US. The model can be used to investigate how changes in the
-drivers of TB epidemiology could lead to changes in long term epidemiology. For
-further details on the epidemiological factors included in the model, detailed
-methods, and main results see the paper “Prospects for tuberculosis elimination
-in the United States: results of a transmission dynamic model” \[citation info
-to be added\].
+epidemiology in the US. The model can be used to investigate how changes
+in the drivers of TB epidemiology could lead to changes in long term
+epidemiology. For further details on the epidemiological factors
+included in the model, detailed methods, and main results see the paper
+“Prospects for tuberculosis elimination in the United States: results of
+a transmission dynamic model” \\\[citation info to be added\\\].
 
 The findings and conclusions described in this web application and
 linked journal article are those of the author(s) and do not necessarily
@@ -31,53 +32,60 @@ Prevention. This web tool was funded by the CDC, National Center for
 HIV, Viral Hepatitis, STD, and TB Prevention Epidemiologic and Economic
 Modeling Agreement (NEEMA, \# 5U38PS004644-01).
 
-### Organization
+### Organization of the tool
 
-Tabby has three pages with interactive visualizations: *Estimates, Time
-Trends,* and *Age Groups.* Each page can be accessed from the menu bar
+Tabby has three pages with interactive visualizations: *Estimates, Time
+Trends,* and *Age Groups.* Each page can be accessed from the menu bar
 at the top of the page.
 
-The *Estimates* page visualizes predicted TB outcomes at five major time points:
-2016, 2025, 2050, 2075, and 2100.
+The *Estimates* page visualizes predicted TB outcomes at five major time
+points: 2016, 2025, 2050, 2075, and 2100.
 
-The *Time Trends* page depicts predicted TB outcomes for each individual year
-from 2016 to 2100.
+The *Time Trends* page depicts predicted TB outcomes for each individual
+year from 2016 to 2100.
 
-The *Age Groups* page visualizes predicted TB outcomes for a specified year
-subdivided into 11 age groups.
+The *Age Groups* page visualizes predicted TB outcomes for a specified
+year subdivided into 11 age groups.
 
 #### Estimates page
 
 User options are shown in a column on the left. The user specifies:
 
-*Comparator:* results can be shown as absolute values for each outcome
+*Comparator:* results can be shown as absolute values for each outcome
 in each year, as a percentage of the base case scenario in the same
 year, or as a percentage of the base case scenario in 2016.
 
-*Subgroup:* results can be shown for the total population, or for a
+*Subgroup:* results can be shown for the total population, or for a
 subgroup described by nativity (US-born, non-US-born), and broad age
 groups (0-24 years, 25-64 years, 65+ years).
 
-*Outcome:* results can be shown for five different outcomes: 
-- 'Incident TB infections' representing the annual number of incident *M. tb
-(Mycobacterium tuberculosis)* infections per million due to transmission within
-the US (includes reinfection of individuals with prior infection, excludes
-immigrants entering the US with established LTBI);
-- 'LTBI Prevalence' representing the percentage of individuals with latent TB
-infection in a given year;
-- 'Active TB Incidence' representing the annual number of notified TB cases per
-million, including TB cases identified after death;
-- 'MDR-TB in incident TB cases' representing the percentage of all incident TB
-cases with multidrug-resistent TB (MDR-TB); and
-- 'TB-Related Deaths' representing annual TB-attributable mortality per million.
+*Outcome:* results can be shown for five different outcomes:
 
-*Scenarios:* results can be shown for up to seven scenarios selected by
-the user, describing hypothetical changes to current TB prevention and control
-activities (‘Modeled Scenarios'), or trends in major epidemiological
-determinants ('Sensitivity Analyses'). Descriptions for each scenario are
-provided below.
+-   'Incident TB Infections' representing the annual number of
+    incident *M. tb (Mycobacterium tuberculosis)* infections per million
+    due to transmission within the US (includes reinfection of
+    individuals with LTBI, excludes immigrants entering the US with
+    established LTBI);
 
-*Download:* clicking on a button initiates download of the visualization
+-   'LTBI Prevalence' representing the percentage of individuals with
+    latent TB infection in a given year;
+
+-   'Active TB Incidence' representing the annual number of notified TB
+    cases per million, including TB cases identified after death;
+
+-   'MDR-TB in Incident TB Cases' representing the percentage of all
+    incident TB cases with multidrug-resistant TB (MDR-TB); and
+
+-   'TB-Related Deaths' representing annual TB-attributable mortality
+    per million.
+
+*Scenarios:* results can be shown for up to seven scenarios selected by
+the user, describing hypothetical changes to current TB prevention and
+control activities (‘Modeled Scenarios'), or trends in major
+epidemiological determinants ('Sensitivity Analyses'). Descriptions for
+each scenario are provided below.
+
+*Download:* clicking on a button initiates download of the visualization
 itself (.png, .pdf, .pptx) or the estimates underlying the visualization
 (.csv, .xlsx).
 
@@ -86,50 +94,56 @@ itself (.png, .pdf, .pptx) or the estimates underlying the visualization
 
 User options are shown in a column on the left. The user specifies:
 
-*Comparator:* results can be shown as absolute values for each outcome
+*Comparator:* results can be shown as absolute values for each outcome
 in each year, as a percentage of the base case scenario in the same
 year, or as a percentage of the base case scenario in 2016.
 
-*Subgroup:* results can be shown for the total population, or for a
+*Subgroup:* results can be shown for the total population, or for a
 subgroup described by nativity (US-born, non-US-born), and broad age
 groups (0-24 years, 25-64 years, 65+ years).
 
-*Outcome:* results can be shown for five different outcomes: 
-- 'Incident TB infections' representing the annual number of incident *M. tb
-(Mycobacterium tuberculosis)* infections per million due to transmission within
-the US (includes reinfection of individuals with prior infection, excludes
-immigrants entering the US with established LTBI);
-- 'LTBI Prevalence' representing the percentage of individuals with latent TB
-infection in a given year;
-- 'Active TB Incidence' representing the annual number of notified TB cases per
-million, including TB cases identified after death;
-- 'MDR-TB in incident TB cases' representing the percentage of all incident TB
-cases with MDR-TB; and
-- 'TB-Related Deaths' representing annual TB-attributable mortality per million.
+*Outcome:* results can be shown for five different outcomes:
 
-*Scenarios:* results can be shown for up to seven scenarios selected by
+-   'Incident TB infections' representing the annual number of
+    incident *M. tb (Mycobacterium tuberculosis)* infections per million
+    due to transmission within the US (includes reinfection of
+    individuals with prior infection, excludes immigrants entering the
+    US with established LTBI);
+
+-   'LTBI Prevalence' representing the percentage of individuals with
+    latent TB infection in a given year;
+
+-   'Active TB Incidence' representing the annual number of notified TB
+    cases per million, including TB cases identified after death;
+
+-   'MDR-TB in incident TB cases' representing the percentage of all
+    incident TB cases with MDR-TB; and
+
+-   'TB-Related Deaths' representing annual TB-attributable mortality
+    per million.
+
+*Scenarios:* results can be shown for up to seven scenarios selected by
 the user, describing different assumptions about future TB prevention
 and control policy (‘Modeled Scenarios'), or trends in major
 epidemiological determinants ('Sensitivity Analyses'). Descriptions for
 each scenario are provided below.
 
-*Download:* clicking on a button initiates download of the visualization
+*Download:* clicking on a button initiates download of the visualization
 itself (.png, .pdf, .pptx) or the estimates underlying the visualization
 (.csv, .xlsx).
-
 
 #### Age Groups page
 
 This page matches the format of the first two pages with the following
 exceptions:
 
-*Comparator:* results are only shown as absolute values for each outcome
+*Comparator:* results are only shown as absolute values for each outcome
 in each year.
 
-*Subgroup:* results can be shown for the total population, or for
+*Subgroup:* results can be shown for the total population, or for
 US-born and non-US-born alone.
 
-*Outcomes:* results can be shown for three major outcomes (LTBI
+*Outcomes:* results can be shown for three major outcomes (LTBI
 prevalence, TB incidence, and TB-related deaths), either as a prevalence
 or incidence rate with each age group (first three selections), or in
 absolute numbers (last three selections).
@@ -137,38 +151,72 @@ absolute numbers (last three selections).
 The following are descriptions of the intervention scenarios and
 outcomes available for visualization in Tabby.
 
-### Scenarios
+#### Scenarios
 
-#### Modeled Scenarios
+**Base case scenario**
+
+The base case scenario projects TB health outcomes assuming steady
+coverage and effectiveness of current TB prevention and treatment
+activities.
+
+Each of the other scenarios that the user can select modify this base
+case scenario in some way, as described below.
+
+**Modeled Scenarios**
 
 -   'TLTBI for New Immigrants': Provision of LTBI testing and treatment
     for all new legal immigrants entering the US.
+
 -   'Improved TLTBI in the United States': Intensification of the
     current LTBI targeted testing and treatment policy for high-risk
     populations, doubling treatment uptake within each risk group
     compared to current levels, and increasing the fraction cured among
     individuals initiating LTBI treatment, via a 3-month
     Isoniazid-Rifapentine drug regimen.
+
 -   'Better Case Detection': Improved detection of active TB cases, such
     that the duration of untreated active disease (time from TB
     incidence to the initiation of treatment) is reduced by 50%.
+
 -   'Better TB Treatment': Improved treatment quality for active TB,
     such that treatment default, failure rates, and the fraction of
     individuals receiving an incorrect drug regimen are reduced by 50%
     from current levels.
+
 -   'All Improvements': The combination of all intervention scenarios
     described above.
 
-#### Sensitivity Analyses
+**Sensitivity Analyses**
 
--   'No Transmission Within the United States after 2016': From 2016
-    onwards, no individuals acquire *M. tb* infection from transmission
-    within the United States. In this scenario the only source of new
-    LTBI cases is from existing infection in new migrants entering the
-    country.
--   'No TB or LTBI in new migrants after 2016': From 2016 onwards, all
-    individuals immigrating to the United States are free of *M. tb*
-    infection, while maintaining the same total volume of immigration.
+-   'No Transmission After 2016': From 2016 onwards, no individuals
+    acquire *M. tb* infection from transmission within the United
+    States. In this scenario the only source of new LTBI cases is from
+    existing infection in new migrants entering the country.
+
+-   'No TB or LTBI in New Migrants after 2016': From 2016 onwards, all
+    individuals immigrating to the United States are free of *M.
+    tb* infection, while maintaining the same total volume of
+    immigration.
+
+-   ‘Reduced TB prevention efforts’: Weakening of US prevention efforts,
+    with the annual rate of TLTBI among target groups halved between
+    2016 and 2021.
+
+-   ‘Rising MDR-TB in new migrants’: Increasing MDR-TB among arriving
+    migrants, to plateau at 19% and 55% of all *M. tb* infections among
+    treatment naïve and previously-treated individuals respectively
+    by 2050.
+
+-   ‘Future immigration at 2016 levels’: Leveling of immigration volume
+    at 2016 levels.
+
+-   ‘Improving global TB control’: Improved global TB control, with TB
+    burden among future migrants dropping at 3% per year, double the
+    current rate of decline.
+
+-   ‘Rising reactivation risks’: Rising LTBI reactivation risks
+    resulting from rising diabetes prevalence (25, 26), such that
+    population-average LTBI reactivation risks rise by 40% by 2050.
     
     
 ### 508 Accessibility of This Product
