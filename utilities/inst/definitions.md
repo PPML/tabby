@@ -11,13 +11,13 @@ analyzed.
 
 A device for comparing something with a standard or baseline measure.
 
-#### **Confidence Intervals**
+#### **Uncertainty Intervals**
 
-Confidence intervals are used to express the degree of uncertainty
-associated with a statistic. A confidence interval is an interval
+Uncertainty intervals are used to express the degree of uncertainty
+associated with a statistic. An uncertainty interval is an interval
 estimate (a value defined by two numbers, between which a population
 parameter lies) combined with a probability statement. For example, a
-statistician might describe an interval estimate as a “95% confidence
+statistician might describe an interval estimate as a “95% uncertainty
 interval”. This means that if we used the same sampling method to
 select different samples and calculated an interval estimate for each
 sample, we would expect the true population parameter to fall within

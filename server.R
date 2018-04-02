@@ -390,7 +390,7 @@ function(input, output, session) {
       ) +
       expand_limits(y=0)
 
-    if(input[['trendsConfidenceInterval-1']]) {
+    if(input[['trendsUncertaintyInterval-1']]) {
       p <- p +
         geom_ribbon(
           mapping = aes(

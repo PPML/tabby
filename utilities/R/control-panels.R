@@ -189,9 +189,9 @@ controlPanel <- function(class, active = FALSE, comparators = NULL,
     if (class=="trends-tab") {
       checkboxGroup2(
         id = paste0(strsplit(class, "-")[[1]][[1]],
-                    "ConfidenceInterval"),
-        heading = "Confidence Intervals",
-        labels = "Add confidence intervals to plots",
+                    "UncertaintyInterval"),
+        heading = "Uncertainty Intervals",
+        labels = "Add uncertainty intervals to plots",
         values = "uncertainty_intervals",
         selected = TRUE
       )
