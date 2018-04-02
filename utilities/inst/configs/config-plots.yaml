@@ -1,13 +1,14 @@
 font: Helvetica-Narrow
 colors:
-  - '#000004FF'
-  - '#1B0C42FF'
-  - '#4B0C6BFF'
-  - '#781C6DFF'
-  - '#A52C60FF'
-  - '#CF4446FF'
-  - '#ED6925FF'
-  - '#FB9A06FF'
+  - "black"
+  - "dodgerblue2"
+  - "#E31A1C"
+  - "green4"
+  - "#FF7F00"
+  - "skyblue2"
+  - "#FB9A99"
+  - "palegreen2"
+  - "#CAB2D6"
 shapes:
   - 4
   - 21
@@ -18,14 +19,15 @@ shapes:
   - 22
   - 23
 fills:
-  - '#F5F5F5'
-  - '#1B0C42FF'
-  - '#4B0C6BFF'
-  - '#781C6DFF'
-  - '#A52C60FF'
-  - '#CF4446FF'
-  - '#F5F5F5'
-  - '#F5F5F5'
+  - "black"
+  - "dodgerblue2"
+  - "#E31A1C"
+  - "green4"
+  - "#FF7F00"
+  - "skyblue2"
+  - "#FB9A99"
+  - "palegreen2"
+  - "#CAB2D6"
 linetypes:
   - 'solid'
   - 'dashed'
