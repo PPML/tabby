@@ -7,10 +7,6 @@ prevention and control activities. This scenario is automatically
 included in all visualizations, and other scenarios are defined and
 analyzed with reference to this scenario.
 
-#### **Comparator**
-
-A device for comparing something with a standard or baseline measure.
-
 #### **Uncertainty Intervals**
 
 Uncertainty intervals are used to express the degree of uncertainty
