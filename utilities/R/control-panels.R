@@ -166,26 +166,7 @@ controlPanel <- function(class, active = FALSE, comparators = NULL,
     ages,
     years,
     outcomes,
-    selectInput(
-      inputId = paste0(strsplit(class, "-")[[1]][[1]], 'InterventionsOrAnalyses'),
-      label = 'Choose Scenarios for Visualization',
-      choices = c('Modeled Scenarios', 'Sensitivity Analyses'),
-      selected = 'Modeled Scenarios'
-    ),
-    conditionalPanel(
-      condition =
-        paste0("input.",
-               strsplit(class, "-")[[1]][[1]],
-               "InterventionsOrAnalyses == 'Modeled Scenarios'"),
-      interventions
-    ),
-    conditionalPanel(
-      condition =
-        paste0("input.",
-               strsplit(class, "-")[[1]][[1]],
-               "InterventionsOrAnalyses == 'Sensitivity Analyses'"),
-      analyses
-    ),
+    interventions,
     if (class=="trends-tab") {
       checkboxGroup2(
         id = paste0(strsplit(class, "-")[[1]][[1]],

@@ -64,7 +64,7 @@ groups (0-24 years, 25-64 years, 65+ years).
 -   **Incident TB Infections** representing the annual number of
     incident *M. tb (Mycobacterium tuberculosis)* infections per million
     due to transmission within the US (includes reinfection of
-    individuals with LTBI, excludes immigrants entering the US with
+    individuals with LTBI, excludes migrants entering the US with
     established LTBI);
 -   **LTBI Prevalence** representing the percentage of individuals with
     latent TB infection in a given year;
@@ -75,10 +75,9 @@ groups (0-24 years, 25-64 years, 65+ years).
 -   **TB-Related Deaths** representing annual TB-attributable mortality
     per million.
 
-*Scenarios:* results can be shown for up to seven scenarios selected by
+*Scenarios:* results can be shown for up to five scenarios selected by
 the user, describing hypothetical changes to current TB prevention and
-control activities (‘Modeled Scenarios'), or trends in major
-epidemiological determinants ('Sensitivity Analyses'). Descriptions for
+control activities (‘Modeled Scenarios'). Descriptions for
 each scenario are provided below.
 
 *Download:* clicking on a button initiates download of the visualization
@@ -103,7 +102,7 @@ groups (0-24 years, 25-64 years, 65+ years).
 -   **Incident TB infections** representing the annual number of
     incident *M. tb (Mycobacterium tuberculosis)* infections per million
     due to transmission within the US (includes reinfection of
-    individuals with prior infection, excludes immigrants entering the
+    individuals with prior infection, excludes migrants entering the
     US with established LTBI);
 -   **LTBI Prevalence** representing the percentage of individuals with
     latent TB infection in a given year;
@@ -114,10 +113,9 @@ groups (0-24 years, 25-64 years, 65+ years).
 -   **TB-Related Deaths** representing annual TB-attributable mortality
     per million.
 
-*Scenarios:* results can be shown for up to seven scenarios selected by
+*Scenarios:* results can be shown for up to five scenarios selected by
 the user, describing different assumptions about future TB prevention
-and control policy (‘Modeled Scenarios'), or trends in major
-epidemiological determinants ('Sensitivity Analyses'). Descriptions for
+and control policy (‘Modeled Scenarios'). Descriptions for
 each scenario are provided below.
 
 *Download:* clicking on a button initiates download of the visualization
@@ -174,33 +172,6 @@ case scenario in some way, as described below.
 -   **All Improvements:** The combination of all intervention scenarios
     described above.
 
-**Sensitivity Analyses**
-
--   **No Transmission After 2016:** From 2016 onwards, no individuals
-    acquire *M. tb* infection from transmission within the United
-    States. In this scenario the only source of new LTBI cases is from
-    existing infection in new migrants entering the country.
--   **No TB or LTBI in New Migrants After 2016:** From 2016 onwards, all
-    individuals immigrating to the United States are free of *M.
-    tb* infection, while maintaining the same total volume of
-    immigration.
--   **Reduced TB Prevention Efforts:** Weakening of US prevention efforts,
-    with the annual rate of TLTBI among target groups halved between
-    2016 and 2021.
--   **Rising MDR-TB in New Migrants:** Increasing MDR-TB among arriving
-    migrants, to plateau at 19% and 55% of all *M. tb* infections among
-    treatment naïve and previously-treated individuals respectively
-    by 2050.
--   **Future Immigration at 2016 Levels:** Leveling of immigration volume
-    at 2016 levels.
--   **Improving Global TB Control:** Improved global TB control, with TB
-    burden among future migrants dropping at 3% per year, double the
-    current rate of decline.
--   **Rising Reactivation Risks:** Rising LTBI reactivation risks
-    resulting from rising diabetes prevalence (25, 26), such that
-    population-average LTBI reactivation risks rise by 40% by 2050.
-    
-    
 ### 508 Accessibility of This Product
 
 Section 508 requires Federal agencies and grantees receiving Federal
@@ -211,6 +182,6 @@ individuals without disabilities, unless an undue burden would be
 imposed on the agency.
 
 If you need assistance with this web application, please contact
-<ppml@hsph.harvard.edu>
+<ppml@hsph.harvard.edu>.
 
 ### 

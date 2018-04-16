@@ -101,7 +101,7 @@ outcomes:
       after death)
     tb_mortality_per_mil: Number of deaths attributable to TB each year
     ltbi_000s: Incident M. TB infections each year due to transmission within the
-      US (includes reinfection of individuals with prior infection, excludes immigrants
+      US (includes reinfection of individuals with prior infection, excludes migrants
       entering the US with established LTBI)
     tb_incidence_000s: TB cases identified each year (includes TB cases identified
       after death)

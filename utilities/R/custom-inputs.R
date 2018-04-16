@@ -66,22 +66,21 @@ checkboxGroup2 <- function(id, heading, labels, values, selected = FALSE, descri
   if (is.null(descriptions)) {
     descriptions <- rep.int("", length(labels))
   }
-
-  tags$div(
+  tags$section(
     id = id,
-    class = "shiny-input-checkboxgroup shiny-input-container",
+    class = "shiny-options-group shiny-input-checkboxgroup shiny-input-container",
+    `aria-label` = heading,
     tags$label(
       class = "control-label",
       `for` = id,
       tabindex = 0,
       heading,
       tags$span(
-        class="sr-only",
-        paste0("Select the ", heading, " by tabbing through the checkboxes below and use enter to make your selection.")
+        class = "sr-only",
+        paste0("Select the ", heading, " by tabbing through the checkboxes below and using enter to make your selection.")
       )
     ),
     tags$div(
-      class = "shiny-options-group",
       Map(
         label = labels,
         value = values,

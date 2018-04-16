@@ -1,19 +1,6 @@
 function(input, output, session) {
   # (to use these headings press COMMAND+SHIFT+O)
   # estimates server ----
-  # __toggle interventions or analyses----
-  observe({
-    x <- input[['estimatesInterventionsOrAnalyses']]
-    if (!is.null(x) && x == 'Modeled Scenarios') {
-      for (n in 1:length(estimates$analyses$values)) {
-        updateCheckboxInput(session, inputId = paste0("estimatesAnalyses-", n), value = FALSE)
-      }
-    } else if (!is.null(x) && x == 'Sensitivity Analyses') {
-      for (n in 1:length(estimates$interventions$values)) {
-        updateCheckboxInput(session, inputId = paste0("estimatesInterventions-", n), value = FALSE)
-      }
-    }
-  })
   # __calculate data ----
   estimatesData <- reactive({
     req(
@@ -225,24 +212,6 @@ function(input, output, session) {
   })
 
   # trends server ----
-  # __toggle interventions or analyses----
-  observe({
-    x <- input[['trendsInterventionsOrAnalyses']]
-    if (!is.null(x) && x == 'Modeled Scenarios') {
-      for (n in 1:length(estimates$analyses$values)) {
-        updateCheckboxInput(session,
-                            inputId = paste0("trendsAnalyses-", n),
-                            value = FALSE)
-      }
-    } else if (!is.null(x) && x == 'Sensitivity Analyses') {
-      for (n in 1:length(estimates$interventions$values)) {
-        updateCheckboxInput(session,
-                            inputId = paste0("trendsInterventions-", n),
-                            value = FALSE)
-      }
-    }
-  })
-
   # __calculate data ----
   trendsData <- reactive({
     req(
@@ -416,19 +385,6 @@ function(input, output, session) {
 
 
   # ages server ----
-  # __toggle interventions or analyses----
-  observe({
-    x <- input[['agegroupsInterventionsOrAnalyses']]
-    if (!is.null(x) && x == 'Modeled Scenarios') {
-      for (n in 1:length(estimates$analyses$values)) {
-        updateCheckboxInput(session, inputId = paste0("agegroupAnalyses-", n), value = FALSE)
-      }
-    } else if (!is.null(x) && x == 'Sensitivity Analyses') {
-      for (n in 1:length(estimates$interventions$values)) {
-        updateCheckboxInput(session, inputId = paste0("agegroupInterventions-", n), value = FALSE)
-      }
-    }
-  })
   # __calculate data ----
   agegroupsData <- reactive({
     req(

@@ -110,7 +110,7 @@ outcomes:
   descriptions:
     tb_infection_per_mil: Incident M. TB infections each year due to transmission
       within the US (includes reinfection of individuals with prior infection, excludes
-      immigrants entering the US with established LTBI)
+      migrants entering the US with established LTBI)
     pct_ltbi: Prevalence of latent M. TB infections at mid-point of year
     tb_incidence_per_mil: TB cases identified each year (includes TB cases identified
       after death)

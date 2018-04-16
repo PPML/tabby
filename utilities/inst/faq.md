@@ -1,11 +1,5 @@
 # Frequently Asked Questions (FAQ)
 
-#### **How are modeled interventions different from sensitivity analyses? **
-
-Modeled interventions are hypothetical scenarios based on possible
-adjustments to global tuberculosis policies, while sensitivity
-analyses are scenarios used for comparison that may be unrealistic.
-
 #### **How do I export data from Tabby? **
 
 Tabby users are able to download the data visualizations that they

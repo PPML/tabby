@@ -61,11 +61,6 @@ time.
 
 A medication used to treat latent TB infection.
 
-#### **Sensitivity Analysis**
-
-A technique used to determine how the results of an analysis change when
-the inputs or the assumptions of the analysis are modified.
-
 #### **TLTBI**
 Treatment and testing for latent tuberculosis infection
 
