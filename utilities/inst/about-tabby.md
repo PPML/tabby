@@ -18,12 +18,12 @@ questions about Tabby are answered in the Frequently Asked Questions
 to [*ppml@hsph.harvard.edu*](mailto:ppml@hsph.harvard.edu).
 
 The estimates shown by Tabby are based on a mathematical model of TB
-epidemiology in the US. The model can be used to investigate how changes
-in the drivers of TB epidemiology could lead to changes in long term
-epidemiology. For further details on the epidemiological factors
-included in the model, detailed methods, and main results see the paper
-“Prospects for tuberculosis elimination in the United States: results of
-a transmission dynamic model” \\\[citation info to be added\\\].
+epidemiology in the US. The model can be used to investigate how changes in the
+drivers of TB epidemiology could lead to changes in long term epidemiology.
+While the model itself includes a large number of factors determining TB
+epidemiology, this web tool is restricted to the scenarios included in the
+published journal article, and does not allow user control of individual
+parameters.
 
 The findings and conclusions described in this web application and
 linked journal article are those of the author(s) and do not necessarily
