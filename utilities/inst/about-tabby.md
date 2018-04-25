@@ -18,16 +18,19 @@ questions about Tabby are answered in the Frequently Asked Questions
 to [*ppml@hsph.harvard.edu*](mailto:ppml@hsph.harvard.edu).
 
 The estimates shown by Tabby are based on a mathematical model of TB
-epidemiology in the US. The model can be used to investigate how changes in the
-drivers of TB epidemiology could lead to changes in long term epidemiology.
-While the model itself includes a large number of factors determining TB
-epidemiology, this web tool is restricted to the scenarios included in the
-published journal article, and does not allow user control of individual
-parameters.
+epidemiology in the United States. The model can be used to investigate how
+changes in the drivers of TB epidemiology could lead to changes in long term
+epidemiology. For further details on the epidemiological factors included in the
+model, detailed methods, and main results see the paper “Prospects for
+tuberculosis elimination in the United States: results of a transmission dynamic
+model” Menzies et al, American Journal of Epidemiology 2018 (forthcoming). While
+the model itself includes a large number of factors determining TB epidemiology,
+this web tool is restricted to the scenarios included in the published journal
+article, and does not allow user control of individual parameters.
 
 The findings and conclusions described in this web application and
 linked journal article are those of the author(s) and do not necessarily
-represent the views of the US Centers for Disease Control and
+represent the views of the U.S. Centers for Disease Control and
 Prevention. This web tool was funded by the CDC, National Center for
 HIV, Viral Hepatitis, STD, and TB Prevention Epidemiologic and Economic
 Modeling Agreement (NEEMA, \# 5U38PS004644-01).
@@ -56,15 +59,15 @@ in each year, as a percentage of the base case scenario in the same
 year, or as a percentage of the base case scenario in 2016.
 
 *Subgroup:* results can be shown for the total population, or for a
-subgroup described by nativity (US-born, non-US-born), and broad age
+subgroup described by nativity (U.S.-born, non-U.S.-born), and broad age
 groups (0-24 years, 25-64 years, 65+ years).
 
 *Outcome:* results can be shown for five different outcomes:
 
 -   **Incident TB Infections** representing the annual number of
     incident *M. tb (Mycobacterium tuberculosis)* infections per million
-    due to transmission within the US (includes reinfection of
-    individuals with LTBI, excludes migrants entering the US with
+    due to transmission within the United States (includes reinfection of
+    individuals with LTBI, excludes migrants entering the United States with
     established LTBI);
 -   **LTBI Prevalence** representing the percentage of individuals with
     latent TB infection in a given year;
@@ -94,16 +97,16 @@ in each year, as a percentage of the base case scenario in the same
 year, or as a percentage of the base case scenario in 2016.
 
 *Subgroup:* results can be shown for the total population, or for a
-subgroup described by nativity (US-born, non-US-born), and broad age
+subgroup described by nativity (U.S.-born, non-U.S.-born), and broad age
 groups (0-24 years, 25-64 years, 65+ years).
 
 *Outcome:* results can be shown for five different outcomes:
 
 -   **Incident TB infections** representing the annual number of
     incident *M. tb (Mycobacterium tuberculosis)* infections per million
-    due to transmission within the US (includes reinfection of
+    due to transmission within the United States (includes reinfection of
     individuals with prior infection, excludes migrants entering the
-    US with established LTBI);
+    United States with established LTBI);
 -   **LTBI Prevalence** representing the percentage of individuals with
     latent TB infection in a given year;
 -   **Active TB Incidence** representing the annual number of notified TB
@@ -131,7 +134,7 @@ exceptions:
 in each year.
 
 *Subgroup:* results can be shown for the total population, or for
-US-born and non-US-born alone.
+U.S.-born and non-U.S.-born alone.
 
 *Outcomes:* results can be shown for three major outcomes (LTBI
 prevalence, TB incidence, and TB-related deaths), either as a prevalence
@@ -155,7 +158,7 @@ case scenario in some way, as described below.
 **Modeled Scenarios**
 
 -   **TLTBI for New Immigrants:** Provision of LTBI testing and treatment
-    for all new legal immigrants entering the US.
+    for all new legal immigrants entering the United States.
 -   **Improved TLTBI in the United States:** Intensification of the
     current LTBI targeted testing and treatment policy for high-risk
     populations, doubling treatment uptake within each risk group
