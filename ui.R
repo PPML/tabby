@@ -10,7 +10,17 @@ fluidPage(
       ".recalculating { opacity: 1.0; }",
       ".nav a { cursor: pointer; }",
       ".tooltip-inner { width: 150px; }"
-    )
+    ),
+    HTML(
+      "<!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src='https://www.googletagmanager.com/gtag/js?id=UA-125759285-1'></script>
+      <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-125759285-1');
+      </script>")
   ),
   tags$div(
     role = "tabpanel",
