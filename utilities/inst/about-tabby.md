@@ -21,10 +21,11 @@ The estimates shown by Tabby are based on a mathematical model of TB
 epidemiology in the United States. The model can be used to investigate how
 changes in the drivers of TB epidemiology could lead to changes in long term
 epidemiology. For further details on the epidemiological factors included in the
-model, detailed methods, and main results see the paper “Prospects for
+model, detailed methods, and main results see the paper [“Prospects for
 tuberculosis elimination in the United States: results of a transmission dynamic
-model” Menzies et al, American Journal of Epidemiology 2018 (forthcoming). While
-the model itself includes a large number of factors determining TB epidemiology,
+model”](https://academic.oup.com/aje/article/187/9/2011/4995883) Menzies et al,
+American Journal of Epidemiology 2018. While the model itself includes a large
+number of factors determining TB epidemiology,
 this web tool is restricted to the scenarios included in the published journal
 article, and does not allow user control of individual parameters.
 
